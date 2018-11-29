@@ -53,6 +53,7 @@ void Flash::get_mp3_meta_data() {
                 ++numFiles;
                 sprintf(mp3Meta[iter], Finfo.fname);
 
+                printf("Name: ");
                 printf(mp3Meta[iter]);
                 printf("\n");
 

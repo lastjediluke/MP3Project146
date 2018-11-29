@@ -20,10 +20,21 @@ build/obj/L5_Application/main.o: L5_Application/main.cpp \
  /home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/task.h \
  /home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/list.h \
  /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/printf_lib.h \
+ /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/str.hpp \
  L5_Application/Flash.h \
  /home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/queue.h \
  /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/vector.hpp \
- /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/str.hpp
+ /home/bionia/SJSU-Dev/firmware/lib/L4_IO/storage.hpp \
+ /home/bionia/SJSU-Dev/firmware/lib/L4_IO/src/FileSystemObject.hpp \
+ /home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.h \
+ /home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/integer.h \
+ /home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ffconf.h \
+ /home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/semphr.h \
+ /home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/queue.h \
+ /home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/disk/diskio.h \
+ /home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/disk/disk_defines.h \
+ /home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/disk/diskioStructs.h \
+ /home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/integer.h
 
 /home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/FreeRTOS.h:
 
@@ -67,10 +78,32 @@ build/obj/L5_Application/main.o: L5_Application/main.cpp \
 
 /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/printf_lib.h:
 
+/home/bionia/SJSU-Dev/firmware/lib/L3_Utils/str.hpp:
+
 L5_Application/Flash.h:
 
 /home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/queue.h:
 
 /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/vector.hpp:
 
-/home/bionia/SJSU-Dev/firmware/lib/L3_Utils/str.hpp:
+/home/bionia/SJSU-Dev/firmware/lib/L4_IO/storage.hpp:
+
+/home/bionia/SJSU-Dev/firmware/lib/L4_IO/src/FileSystemObject.hpp:
+
+/home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.h:
+
+/home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/integer.h:
+
+/home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ffconf.h:
+
+/home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/semphr.h:
+
+/home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/queue.h:
+
+/home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/disk/diskio.h:
+
+/home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/disk/disk_defines.h:
+
+/home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/disk/diskioStructs.h:
+
+/home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/integer.h:
