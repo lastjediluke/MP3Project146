@@ -17,11 +17,12 @@ class Flash {
         char mp3Meta[10][20];
         // for opening and reading files
         VECTOR<FileName> mp3Files;
-        uint16_t numFiles;
+        uint8_t numFiles;
     public:
         Flash();
         // to be used with LCD
-        void get_mp3_meta_data();
+        void get_mp3_files();
+        void get_mp3_metadata();
         void print_meta_data();
         // if user is ready to switch, or start, the song,
         // have user specify the song to send to decoder with

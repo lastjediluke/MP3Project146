@@ -22,7 +22,6 @@ build/obj/L5_Application/Flash.o: L5_Application/Flash.cpp \
  /home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/mpu_wrappers.h \
  /home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/queue.h \
  /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/printf_lib.h \
- /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/str.hpp \
  /home/bionia/SJSU-Dev/firmware/lib/L4_IO/storage.hpp \
  /home/bionia/SJSU-Dev/firmware/lib/L4_IO/src/FileSystemObject.hpp \
  /home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.h \
@@ -36,7 +35,8 @@ build/obj/L5_Application/Flash.o: L5_Application/Flash.cpp \
  /home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/integer.h \
  /home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.h \
  /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/vector.hpp \
- L5_Application/Flash.h
+ L5_Application/Flash.h \
+ /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/str.hpp
 
 /home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/lpc_sys.h:
 
@@ -84,8 +84,6 @@ build/obj/L5_Application/Flash.o: L5_Application/Flash.cpp \
 
 /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/printf_lib.h:
 
-/home/bionia/SJSU-Dev/firmware/lib/L3_Utils/str.hpp:
-
 /home/bionia/SJSU-Dev/firmware/lib/L4_IO/storage.hpp:
 
 /home/bionia/SJSU-Dev/firmware/lib/L4_IO/src/FileSystemObject.hpp:
@@ -113,3 +111,5 @@ build/obj/L5_Application/Flash.o: L5_Application/Flash.cpp \
 /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/vector.hpp:
 
 L5_Application/Flash.h:
+
+/home/bionia/SJSU-Dev/firmware/lib/L3_Utils/str.hpp:

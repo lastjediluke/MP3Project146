@@ -3,7 +3,6 @@
 #include "FreeRTOS.h"
 #include "queue.h"
 #include "printf_lib.h"
-#include "str.hpp"
 
 #include "storage.hpp"          // Get Storage Device instances
 #include "ff.h"
@@ -11,11 +10,14 @@
 #include "vector.hpp"
 #include "Flash.h"
 
+#include <string.h>
+#include "str.hpp"
+
 Flash::Flash() {
     numFiles = 0;
 }
 
-void Flash::get_mp3_meta_data() {
+void Flash::get_mp3_files() {
     DIR Dir;
     FILINFO Finfo;
     FRESULT returnCode = FR_OK;
@@ -30,7 +32,7 @@ void Flash::get_mp3_meta_data() {
         return;
     }
 
-    u0_dbg_printf("Directory listing of: %s\n\n", dirPath);
+    u0_dbg_printf("Directory listing of: %s\n", dirPath);
     // endless loop
     uint8_t iter = 0;
     for (;;) {
@@ -51,22 +53,106 @@ void Flash::get_mp3_meta_data() {
             // check if currently reading mp3 file
             if (name.contains("MP3")) {
                 ++numFiles;
-                sprintf(mp3Meta[iter], Finfo.fname);
+                sprintf(mp3Meta[iter], Finfo.lfname);
 
-                printf("Name: ");
-                printf(mp3Meta[iter]);
-                printf("\n");
-
-                // store name for file referencing when opening, reading, and decoding files
-                FileName fileRef;
-                sprintf(fileRef.buffer, "1:%s", tmp);
-                mp3Files.push_back(fileRef);
+                // printf("Name: ");
+                // printf(mp3Meta[iter]);
+                // printf("\n");
 
                 ++iter;
             }
         }
     }
     f_closedir(&Dir);
+    return;
+}
+
+void Flash::get_mp3_metadata() {
+    for (uint8_t k = 0; k < numFiles; k++) {
+        char fileName[75];
+        char buffTmp[75];
+        int i = 0;
+        char songTitle[40];
+        char artist[40];
+
+        for (i = 0; i < 40; i ++) {
+            songTitle[i] = ' ';
+            artist[i] = ' ';
+        }
+
+        str file = "1:";
+        str tmp1(mp3Meta[k]);
+        file.append(tmp1);
+        strcpy(fileName, file.c_str());
+
+        printf("File name: \n");
+        printf(fileName);
+        printf("\n");
+
+        Storage::read(fileName, &buffTmp, strlen(buffTmp), 0);
+
+        // clean buffer by replacing weird characters with space
+        for (i = 0; i < 75; i++) {
+            if (buffTmp[i] > 122 || (buffTmp[i] < 97 && buffTmp[i] > 90) || 
+                (buffTmp[i] < 65 && buffTmp[i] > 57) || (buffTmp[i] < 48 && buffTmp[i] > 32) || 
+                buffTmp[i] < 32)
+                buffTmp[i] = ' ';
+        }
+
+        for (i = 0; i < 75; i++) {
+            // navigate to Song Title
+            if (buffTmp[i] == '2' && buffTmp[i - 1] == 'T') {
+                // skip non alpha
+                while (buffTmp[i] > 122 || buffTmp[i] < 65) {
+                    i++;
+                }
+
+                // get song title
+                uint16_t j = 0;
+                while (1) {
+                    songTitle[j] = buffTmp[i];
+                    i++;
+                    j++;
+                    if ((buffTmp[i] == 'T') && (buffTmp[i + 1] == 'P') && (buffTmp[i + 2] == 'E')) {
+                        break;
+                    }
+                }
+
+                // skip tag TPE2, currently at "T"
+                i += 4;
+                // skip non alpha
+                while (buffTmp[i] > 122 || buffTmp[i] < 65) {
+                    i++;
+                }
+
+                // get artist
+                j = 0;
+                while (1) {
+                    artist[j] = buffTmp[i];
+                    i++;
+                    j++;
+                    if ((buffTmp[i] == 'P') && (buffTmp[i + 1] == 'O')) {
+                        break;
+                    }
+                }
+
+                u0_dbg_printf("Artist Char: ");
+                for (i = 0; i < 40; i++) {
+                    u0_dbg_printf("%c", artist[i]);
+                }
+                u0_dbg_printf("\n");
+
+                u0_dbg_printf("Title Char: ");
+                for (i = 0; i < 40; i++) {
+                    u0_dbg_printf("%c", songTitle[i]);
+                }
+                u0_dbg_printf("\n\n");
+
+                break;
+            }
+        }
+    }
+
     return;
 }
 
