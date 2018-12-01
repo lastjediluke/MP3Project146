@@ -1,361 +1,533 @@
-/*
- *     SocialLedge.com - Copyright (C) 2013
- *
- *     This file is part of free software framework for embedded processors.
- *     You can use it and/or distribute it as long as this copyright header
- *     remains unmodified.  The code is free for personal use and requires
- *     permission to use in a commercial product.
- *
- *      THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
- *      OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
- *      MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
- *      I SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
- *      CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
- *
- *     You can reach the author of this software at :
- *          p r e e t . w i k i @ g m a i l . c o m
- */
-
-/**
- * @file
- * @brief This is the application entry point.
- */
-
-// Adafruit Write function: drawChar, startWrite, 
-
-
 #include <stdio.h>
 #include "utilities.h"
 #include "io.hpp"
 #include "MP3SPI.hpp"
 #include "MP3GPIO.hpp"
+#include "FreeRTOS.h"
+#include "tasks.hpp"
+#include "task.h"
+#include "uart0_min.h"
+#include "LPC17xx.h"
+#include "INTDrv.hpp"
+#include "lpc_isr.h"
+#include <string.h>
+// #include "testForMP3.cpp"
 
+
+INTDrv * IntDriver = INTDrv::instance();
+
+SemaphoreHandle_t downSemaphore = NULL;
+SemaphoreHandle_t selectSemaphore = NULL;
+SemaphoreHandle_t backSemaphore = NULL;
+SemaphoreHandle_t xSemaphore = NULL;
+
+bool downButton = 0;
+bool selectButton = 0;
+bool backButton = 0;
+
+char **statePtr;
+char **songPlayingPtr;
 
 
 MP3SPI instance;
-// MP3GPIO resetPin(0, 0);                 // green
-// MP3GPIO lcd_cs(1, 0);                   // blue
-// MP3GPIO commandParamControl(0, 2);      // orange
-// MP3GPIO ledPower(1, 2);                 // maroon
-uint8_t data[4];
-int isLEDOn;
-int isResetOn;
-int rw;
-MP3GPIO VO (26, 0);     // orange
-MP3GPIO RS (31, 1);     // purple ish
-MP3GPIO RW (30, 1);     // green
-MP3GPIO E (29, 1);     // blue
-MP3GPIO DB0 (0, 2);     // orange
-MP3GPIO DB1 (1, 2);     // orange
-MP3GPIO DB2 (2, 2);     // orange
-MP3GPIO DB3 (3, 2);     // orange
-MP3GPIO DB4 (4, 2);     // orange
-MP3GPIO DB5 (5, 2);     // orange
-MP3GPIO DB6 (6, 2);     // orange
-MP3GPIO DB7 (7, 2);     // orange
-MP3GPIO BL1 (1, 0);     // orange
-MP3GPIO BL2 (0, 0);     // orange
 
+MP3GPIO lcd_cs(1, 0);                 
 
+MP3GPIO sw1 (9, 1);		
+MP3GPIO sw2 (10, 1);		
+MP3GPIO sw3 (14, 1);		
+MP3GPIO sw4 (15, 1);
 
+MP3GPIO led1 (0, 1);
+MP3GPIO led2 (1, 1);
+MP3GPIO led3 (4, 1);
+MP3GPIO led4 (8, 1);
 
-/*spi lcd pin color map:
-1. green = reset
-2. blue = cs
-3. yellow = mosi
-4. white = miso
-5. gray = sck
-6. maroon = led
-7. orange = dc/rs
-*/
+// ### Now Playing ###
 
+uint8_t nowPlayingSize = 2;
+uint8_t nowPlayingCounter = 0;
 
+// ### Menu ###
 
-// I'll need to flesh this out further...
+char * menu[] = {
+	"Main Menu",
+	">Songs",
+	">Artists",
+	">Now Playing",
+	NULL
+};
+uint8_t menuSize = 4;
+uint8_t menuCounter = 1;
 
-struct MapIntToString
+// ### Artists ###
+
+// char * artists[] = {
+// 	"Artists:",
+// 	">Dre",
+// 	">Beach Boys",
+// 	NULL
+// };
+
+char * artists[10] = {};
+uint8_t artistCounter = 1;
+uint8_t artistSize = 2;
+
+struct artistStruct {
+	char *nameOfArtist;
+	char * artistSongs[3];
+	int songCount;
+};
+
+artistStruct myArtists[4] = {
+	{"Dre", {"Forgot About Dre", "Fuck You", NULL}, 2},
+	{"Weezer", {"Say it Ain't So", "", NULL}, 1},
+	{"", {"", "", ""}, -1}
+};
+artistStruct *artistStructPtr;
+
+// ### Songs ###
+
+// char * songs[] = {
+// 	"Songs:",
+// 	">Forgot About Dre",
+// 	">California Girls",
+// 	NULL
+
+// };
+
+char * songs[10] = {};
+uint8_t songsSize = 4;		// there is actually three songs, but the first entry is the title of the menu
+uint8_t songsCounter = 1;
+
+// ### Functions for getting the songs and stuff ###
+
+void getSongsFromStruct()
 {
-    char value;
-    uint8_t command;
-};
+	int songIndex = 1;		// start at one because of previous codes
+	int i = 0;
+	int artistSongCount = 0;
+	while (myArtists[i].songCount != -1)
+	{
+		while (artistSongCount < myArtists[i].songCount)
+		{
+			songs[songIndex] = myArtists[i].artistSongs[artistSongCount];
+			artistSongCount++;
+			songIndex++;
+		}
+		artistSongCount = 0;
+		i++;
+	}
 
-MapIntToString my_map[3] = {
-    { 'a', 0x90 },
-    { 'b', 0x40 },
-    { 'c', 0xff }
-};
+	
+	printf("%s, %s, %s\n", songs[1], songs[2], songs[3] );
+}
+
+void getArtistFromStruct()
+{
+	int artistIndex = 1;		// start at one because of previous codes
+	int i = 0;
+	
+	while (myArtists[i].songCount != -1)
+	{
+		artists[artistIndex] = myArtists[i].nameOfArtist;
+		i++;
+		artistIndex++;
+	}
+
+	printf("%s, %s\n", artists[1], artists[2]);
+}
+
+void getArtistFromSong()
+{
+	int songIndex = 1;		// start at one because of previous codes
+	int i = 0;
+	int artistSongCount = 0;
+	while (myArtists[i].songCount != -1)
+	{
+		while (artistSongCount < myArtists[i].songCount)
+		{
+			if (strcmp (songPlayingPtr[songsCounter-1], myArtists[i].artistSongs[artistSongCount]) == 0)
+			{
+				artistStructPtr = &myArtists[i];
+				break;
+			}
+			artistSongCount++;
+		}
+		artistSongCount = 0;
+		i++;
+	}
+}
+
+typedef enum {
+	mainMenuScreen,
+	artistsScreen,
+	songsScreen,
+	nowPlayingScreen
+} myStateType;
+myStateType currentState = mainMenuScreen;
+myStateType previousState = mainMenuScreen;
+myStateType tempState = mainMenuScreen;
+
+uint8_t artistsSize = 2;
+uint8_t artistsCounter = 1;
+
+
+void Eint3Handler(void)
+{
+    IntDriver->HandleInterrupt();
+}
+
+void switchPressHandler()
+{
+    //give semaphore from ISR to waiting task
+    //just uart0_puts()
+    xSemaphoreGiveFromISR(xSemaphore, NULL);
+}
+
+void spiSendString(char *d)
+{
+	lcd_cs.setLow();
+	int i = 0;
+	while (d[i] != '\0')
+	{
+		delay_ms(5);
+		instance.transfer(d[i]);
+		i++;
+	}
+	lcd_cs.setHigh();
+}
+
+void newLine ()
+{
+	lcd_cs.setLow();
+	instance.transfer(0x0d);
+	lcd_cs.setHigh();
+}
+
+void clearDisplay()
+{
+	lcd_cs.setLow();
+	instance.transfer(0x7c);
+	instance.transfer(0x2d);
+	lcd_cs.setHigh();
+}
+
+void prepareForNextState()
+{
+	uart0_puts ("prepare for segue\n");
+	switch(currentState)
+	{
+		case mainMenuScreen:
+		{	
+			if (menuCounter == 2)
+			{
+				currentState = songsScreen;
+				uart0_puts("cs is now song screen\n");
+				break;
+			}
+
+			if (menuCounter == 3)
+			{
+				currentState = artistsScreen;
+				uart0_puts("cs is now artisits screen\n");
+				break;
+			}
+
+			if (menuCounter == 4)
+			{
+				currentState = nowPlayingScreen;
+				uart0_puts("cs is now playing screen\n");
+				break;
+			}
+			
+			
+		}
+		case artistsScreen:
+		{
+			break;
+		}
+		case songsScreen:
+		{
+			songPlayingPtr = songs;
+			getArtistFromSong();
+			currentState = nowPlayingScreen;
+			break;
+		}
+
+		case nowPlayingScreen:
+		{
+			break;
+		}
+	}
+
+}
+
+
+
+void displayCurrentState()
+{
+	switch (currentState)
+	{
+		case mainMenuScreen:
+		{
+			if (menuCounter == 4)
+        	{
+        		menuCounter = 1;
+        	}
+        	printf("%d\n", menuCounter);
+        	uart0_puts("displaying main menu\n");
+            clearDisplay();
+            spiSendString(menu[0]);
+            newLine();
+            spiSendString(menu[menuCounter]);
+            menuCounter++;
+			break;
+		}
+
+		case songsScreen:
+		{
+			uart0_puts ("displaying song screen\n");
+			if (songsCounter == songsSize)
+        	{
+        		songsCounter = 1;
+        	}
+            clearDisplay();
+            spiSendString("Songs: ");
+            newLine();
+            spiSendString(songs[songsCounter]);
+            songsCounter++;
+			break;
+		}
+
+		case artistsScreen:
+		{
+			uart0_puts ("displaying artists screen\n");
+			if (songsCounter == 3)
+        	{
+        		songsCounter = 1;
+        	}
+            clearDisplay();
+            spiSendString(songs[0]);
+            newLine();
+            spiSendString(songs[songsCounter]);
+            songsCounter++;
+			break;
+		}
+
+		case nowPlayingScreen:
+		{
+			uart0_puts ("displaying now Playing screen\n");
+			if (nowPlayingCounter == nowPlayingSize)
+        	{
+        		nowPlayingCounter = 0;
+        	}
+            clearDisplay();
+            spiSendString("Now Playing: ");
+            newLine();
+            if (nowPlayingCounter == 0) spiSendString(artistStructPtr->nameOfArtist);
+            else spiSendString(songPlayingPtr[songsCounter-1]);
+            
+            nowPlayingCounter++;
+			break;
+		}
+	}
+
+}
+
+void vControlLED(void *)
+{
+    while(1)
+    {
+    	// uart0_puts("waiting to control leds");
+        // if (downButton)
+        if (xSemaphoreTake(downSemaphore, 0))
+        {
+        	downButton = 0;
+        	uart0_puts ("down button pressed\n");
+        	led3.setLow();
+        	displayCurrentState();
+        }
+        	
+        // if (selectButton)
+        if (xSemaphoreTake(selectSemaphore, 0))
+        {
+        	led2.setLow();
+        	previousState = currentState;
+        	uart0_puts ("select button pressed\n");
+        	prepareForNextState();
+        	displayCurrentState();
+        	selectButton = 0;
+
+        }
+
+        if (xSemaphoreTake(backSemaphore, 0))
+        {
+        	led4.setLow();
+        	uart0_puts ("back button pressed\n");
+        	tempState = currentState;
+        	currentState = previousState;
+        	previousState = tempState;
+        	displayCurrentState();
+        	selectButton = 0;
+
+        }
+        led1.setHigh();
+        led2.setHigh();
+        led3.setHigh();
+        led4.setHigh();
+    }
+}
+
+void vReadSwitch(void *)
+{
+	while (1)
+	{
+		delay_ms(150);
+		if (sw1.getLevel())
+		{
+			uart0_puts("1 pressed\n");
+			xSemaphoreGive(xSemaphore);
+		}
+
+		if (sw2.getLevel())					// select button
+		{
+			while (sw2.getLevel())
+			{
+				uart0_puts("2 pressed\n");		
+			}
+			xSemaphoreGive(selectSemaphore);
+			selectButton = 1;
+		}
+
+		if (sw3.getLevel())					// down button
+		{
+			while (sw3.getLevel()) {
+				uart0_puts("3 pressed\n");
+				
+			}
+			xSemaphoreGive(downSemaphore);
+			downButton = 1;
+		}
+
+		if (sw4.getLevel())
+		{
+			while (sw4.getLevel())
+			{
+				uart0_puts("4 pressed\n");
+			}
+			xSemaphoreGive(backSemaphore);
+		}
+
+		// else { uart0_puts ("nothing pressed\n"); }
+	}
+}
+
+void buttonAndLedSetup()
+{
+	sw1.setAsInput();
+	sw2.setAsInput();
+	sw3.setAsInput();
+	sw4.setAsInput();
+
+	led1.setAsOutput();
+	led2.setAsOutput();
+	led3.setAsOutput();
+	led4.setAsOutput();
+
+	uart0_puts ("leds and buttons setup");
+}
 
 void outputSetup () 
 {
-    // VO.setAsOutput();
-    RS.setAsOutput();
-    RW.setAsOutput();
-    E.setAsOutput();
-    DB0.setAsOutput();
-    DB1.setAsOutput();
-    DB2.setAsOutput();
-    DB3.setAsOutput();
-    DB4.setAsOutput();
-    DB5.setAsOutput();
-    DB6.setAsOutput();
-    DB7.setAsOutput();
-    // BL1.setAsOutput();
-    // BL2.setAsOutput();
-
-}
-
-void write (char byte)
-{
-
-    outputSetup(); //makes all the pins as outputs
-    if(byte&1<<7)
-    {
-        DB7.setHigh(); 
-    }
-    else
-    {
-        DB7.setLow(); 
-    }
-    if(byte&1<<6)
-    {
-        DB6.setHigh(); 
-    }
-    else
-    {
-        DB6.setLow();
-    }
-    if(byte&1<<5)
-    {
-        DB5.setHigh(); 
-    }
-    else
-    {
-        DB5.setLow(); 
-    }
-    if(byte&1<<4)
-    {
-        DB4.setHigh(); 
-    }
-    else
-    {
-        DB4.setLow(); 
-    }
-    if(byte&1<<3)
-    {
-        DB3.setHigh(); 
-    }
-    else
-    {
-        DB3.setLow(); 
-    }
-    if(byte&1<<2)
-    {
-        DB2.setHigh(); 
-    }
-    else
-    {
-        DB2.setLow();
-    }
-    if(byte&1<<1)
-    {
-        DB1.setHigh(); 
-    }
-    else
-    {
-        DB1.setLow(); 
-    }
-    if(byte & 1 << 0)
-    {
-        DB0.setHigh(); 
-    }
-    else
-    {
-        DB0.setLow(); 
-    }
-            
-}
-
-void setAllHigh()
-{
-    RS.setLow();
-    RW.setLow();
-    E.setHigh();
-    DB0.setHigh();
-    DB1.setHigh();
-    DB2.setHigh();
-    DB3.setHigh();
-    DB4.setHigh();
-    DB5.setHigh();
-    DB6.setHigh();
-    DB7.setHigh();
-}
-
-void setAllLow()
-{
-    RS.setLow();
-    RW.setLow();
-    E.setLow();
-    DB0.setLow();
-    DB1.setLow();
-    DB2.setLow();
-    DB3.setLow();
-    DB4.setLow();
-    DB5.setLow();
-    DB6.setLow();
-    DB7.setHigh();
-}
-
-
-void charScreenInit()
-{
-   
-    E.setLow();
-    RS.setLow();
-    RW.setLow();
-    delay_ms(1000);
-   
-    E.setHigh();
-    delay_ms(6);
-    // write(0x1c);
-    DB0.setLow();
-    DB1.setLow();
-    DB2.setLow();
-    DB3.setLow();
-    DB4.setHigh();
-    DB5.setHigh();
-    DB6.setLow();
-    DB7.setLow();
-    delay_ms(6);
-    E.setLow();
-    delay_ms(6);
-    RW.setHigh();
-
-    delay_ms(6);
-
-    RW.setLow();
-    delay_ms(1);
-    E.setHigh();
-    delay_ms(1);
-    DB0.setLow();
-    DB1.setHigh();
-    DB2.setHigh();
-    DB3.setHigh();
-    DB4.setLow();
-    DB5.setLow();
-    DB6.setLow();
-    DB7.setLow();
-    // write(0x0e);
-    delay_ms(1);
-    E.setLow();
-    delay_ms(1);
-    RW.setHigh();
-
-    RW.setLow();
-    delay_ms(1);
-    E.setHigh();
-    delay_ms(1);
-    write(0x06);
-    delay_ms(1);
-    E.setLow();
-    delay_ms(1);
-    RW.setHigh();
-
-    RW.setLow();
-    delay_ms(1);
-    E.setHigh();
-    delay_ms(1);
-    write(0x06);
-    delay_ms(1);
-    E.setLow();
-    delay_ms(1);
-    RW.setHigh();
-
-}
-
-/*
-void lcdScreenInit()
-{
-    resetPin.setAsOutput();
     lcd_cs.setAsOutput();
-    commandParamControl.setAsOutput();
-    ledPower.setAsOutput();
-
-    lcd_cs.setHigh();
-    ledPower.setLow();
-    commandParamControl.setLow();
-    resetPin.setHigh();
-    resetPin.setLow();
-    delay_ms(20);
-    resetPin.setHigh();
-
-    lcd_cs.setLow();
-    data[0] = instance.transfer(0x11);
-    lcd_cs.setHigh();
-
-    delay_ms(61);
-
-    lcd_cs.setLow();
-    data[1] = instance.transfer(0x29);
-    lcd_cs.setHigh();
-    ledPower.setHigh();
-
-    isLEDOn = ledPower.getLevel();
-    isResetOn = resetPin.getLevel();
-    rw = commandParamControl.getLevel();
-
-    printf("%i, %i, %i\n", isLEDOn, isResetOn, rw);
-
 }
 
-void displayID()
+void spiLCDInit()
 {
-    lcd_cs.setLow();
-    data[0] = instance.transfer(0xda);
-    data[1] = instance.transfer(0xda);
-    data[2] = instance.transfer(0xda);
-    lcd_cs.setHigh();
-}
+    outputSetup();
+    instance.initialize(8, MP3SPI::SPI, 128);
+    delay_ms(1000);
 
-void inversion()
-{
     lcd_cs.setLow();
-    instance.transfer(0x21);
+    instance.transfer(0x7c);	// setting mode
+    instance.transfer(0x2d);	// clearing
     lcd_cs.setHigh();
-}
+    
+    lcd_cs.setLow();
+    instance.transfer(0x7c);
+    instance.transfer(0x10);	// baud rate
+    lcd_cs.setHigh();
 
-*/
+    lcd_cs.setLow();
+    instance.transfer(0x7c);	// setting mode
+    instance.transfer(0x2d);
+    // instance.transfer(0x7c);
+    // instance.transfer(0x05);		// trying to set to 4 lines
+    lcd_cs.setHigh();
+
+    /*
+    lcd_cs.setLow();
+    instance.transfer('a');	
+    instance.transfer(0x62);
+    instance.transfer(0x63);
+    instance.transfer(0x0d);		// carriage return command...whichh works as new line
+    instance.transfer('n');
+    instance.transfer(0x0a);		// line feed..doesn't seem to do new line
+    lcd_cs.setHigh();
+
+    char *test = "Song";	
+    spiSendString(test);			// this func works
+    */
+}
 
 int main (void)
 {
-
-    // instance.initialize(8, MP3SPI::SPI, 2);
-    // lcdScreenInit();
-    // inversion();
-
+    // IntDriver->Initialize();
     outputSetup();
+    buttonAndLedSetup();
+    // menuSize = sizeof(menu)/sizeof(menu[0]);		// get the menu size
+    // isr_register(EINT3_IRQn, Eint3Handler);
+    char **ptr;		// array of pointers
+    ptr = menu;		//pointing to 0th element of menu ### leave this line ###
+    // ptr = getCurrentState();
+    // statePtr = menu;
+    // statePtr = &menu;
+    char *(*ptr2)[5];
+    ptr2 = &menu;		// points to whole array
+
+    getSongsFromStruct();
+    getArtistFromStruct();
+
+    // artistStructPtr = &myArtists[1];
+    // printf("%s\n", artistStructPtr->nameOfArtist);
+
+    // songPlayingPtr = songs;
+    // printf("%s\n", songPlayingPtr[2]);
+   
+    xSemaphore = xSemaphoreCreateBinary();
+    downSemaphore = xSemaphoreCreateBinary();
+    selectSemaphore = xSemaphoreCreateBinary();
+    backSemaphore = xSemaphoreCreateBinary();
     delay_ms(50);
-    setAllLow();
-    // charScreenInit();
-    // setAllHigh();
+    spiLCDInit();
 
-    // int a = DB0.getLevel();
-    // int b = DB1.getLevel();
-    // int c = DB2.getLevel();
-    // int d = DB3.getLevel();
-    // int e = DB4.getLevel();
-    // int f = DB5.getLevel();
-    // int g = DB6.getLevel();
-    // int h = DB7.getLevel();
-    // int enbale = E.getLevel();
-    // int rs = RS.getLevel();
-    // int rw = RW.getLevel();
-
-    // printf("%d, %d\n, %d, %d\n, %d, %d\n, %d, %d\n, %d, %d\n, %d\n", a, b, c, d, e, f, g, h, enbale, rs, rw);
-    
-
-    
+    const uint32_t STACK_SIZE_WORDS = 128;
+    xTaskCreate(vControlLED, "vControlLED", STACK_SIZE_WORDS, NULL, tskIDLE_PRIORITY + 1, NULL);
+    xTaskCreate(vReadSwitch, "vReadSwitch", STACK_SIZE_WORDS, NULL, tskIDLE_PRIORITY + 1, NULL);
 
     /*
+    IntDriver->AttachInterruptHandler(1, 9, switchPressHandler, kFallingEdge);
+    IntDriver->AttachInterruptHandler(1, 10, switchPressHandler, kFallingEdge);
+    IntDriver->AttachInterruptHandler(1, 14, switchPressHandler, kFallingEdge);
+    IntDriver->AttachInterruptHandler(1, 15, switchPressHandler, kFallingEdge);
+    */
+    vTaskStartScheduler();
+    return 0;
+}
+
+
+/*
     char cab[4] = "cab";
 
     int i = 0;
@@ -381,7 +553,32 @@ int main (void)
 
     */
 
-    
-    
-    return 0;
-}
+/*	### Pointer Fuckery ###
+	char **ptr;			// array of pointers
+    // ptr = menu;		//pointing to 0th element of menu ### leave this line ###
+    ptr = getCurrentState();
+
+    char *(*ptr2)[5];
+    ptr2 = &menu;		// points to whole array
+
+    printf("%s\n, %s\n", *ptr, *(ptr+1));		prints array[0] and array[1]
+*/
+
+/*
+if (menuCounter == 4)
+        	{
+        		menuCounter = 1;
+        	}
+            led1.setLow();
+            led2.setLow();
+            led3.setLow();
+            led4.setLow();
+            clearDisplay();
+            spiSendString(menu[0]);
+            newLine();
+            spiSendString(menu[menuCounter]);
+            menuCounter++;
+
+            vTaskDelay(100);
+        }
+*/
