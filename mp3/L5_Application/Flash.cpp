@@ -59,10 +59,6 @@ void Flash::get_mp3_files() {
                 ++numFiles;
                 sprintf(mp3Files[iter], Finfo.lfname);
 
-                ("Name: ");
-                printf(mp3Files[iter]);
-                printf("\n");
-
                 ++iter;
             }
         }
@@ -81,6 +77,11 @@ void Flash::get_mp3_metadata(char *songs, char *arts, uint8_t rows, uint8_t cols
         str tmp1(mp3Files[k]);
         file.append(tmp1);
         strcpy(fileName, file.c_str());
+
+        // fixes weird bug that ignores metadata of first mp3 file
+        for (i = 0; i < 75; i++) {
+            buffTmp[i] = ' ';
+        }
 
         Storage::read(fileName, &buffTmp, strlen(buffTmp), 0);
 

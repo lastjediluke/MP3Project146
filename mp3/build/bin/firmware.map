@@ -135,7 +135,7 @@ Archive member included to satisfy reference by file (symbol)
 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-printf.o)
                               build/obj//home/bionia/SJSU-Dev/firmware/lib/L3_Utils/src/file_logger.o (printf)
 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-putchar.o)
-                              build/obj/L5_Application/Flash.o (putchar)
+                              build/obj/L5_Application/main.o (putchar)
 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-puts.o)
                               build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/lpc_sys.o (puts)
 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-rand.o)
@@ -3203,7 +3203,7 @@ LOAD /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/g
 LOAD /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a
 END GROUP
 
-.text           0x0000000000010000    0x10f18
+.text           0x0000000000010000    0x10f10
  FILL mask 0xff
  *(.isr_vector)
  .isr_vector    0x0000000000010000       0xcc build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/startup.o
@@ -3211,7 +3211,7 @@ END GROUP
                 0x00000000000100cc                . = ALIGN (0x4)
                 0x00000000000100cc                __section_table_start = .
                 0x00000000000100cc                __data_section_table = .
-                0x00000000000100cc        0x4 LONG 0x20f20 LOADADDR (.data)
+                0x00000000000100cc        0x4 LONG 0x20f18 LOADADDR (.data)
                 0x00000000000100d0        0x4 LONG 0x2007c000 ADDR (.data)
                 0x00000000000100d4        0x4 LONG 0x2fc SIZEOF (.data)
                 0x00000000000100d8                __data_section_table_end = .
@@ -4278,898 +4278,898 @@ END GROUP
                 0x0000000000017a74                Flash::get_number_of_songs()
  *fill*         0x0000000000017a7a        0x2 ff
  .text._ZN5Flash13get_mp3_filesEv
-                0x0000000000017a7c       0xb0 build/obj/L5_Application/Flash.o
+                0x0000000000017a7c       0xa0 build/obj/L5_Application/Flash.o
                 0x0000000000017a7c                Flash::get_mp3_files()
  .text._ZN5Flash16get_mp3_metadataEPcS0_hh
-                0x0000000000017b2c      0x178 build/obj/L5_Application/Flash.o
-                0x0000000000017b2c                Flash::get_mp3_metadata(char*, char*, unsigned char, unsigned char)
+                0x0000000000017b1c      0x180 build/obj/L5_Application/Flash.o
+                0x0000000000017b1c                Flash::get_mp3_metadata(char*, char*, unsigned char, unsigned char)
  .text._ZN5Flash8mp3_initEPcS0_hh
-                0x0000000000017ca4       0x28 build/obj/L5_Application/Flash.o
-                0x0000000000017ca4                Flash::mp3_init(char*, char*, unsigned char, unsigned char)
+                0x0000000000017c9c       0x28 build/obj/L5_Application/Flash.o
+                0x0000000000017c9c                Flash::mp3_init(char*, char*, unsigned char, unsigned char)
  .text._Z14vprintMp3FilesPv
-                0x0000000000017ccc        0xa build/obj/L5_Application/main.o
-                0x0000000000017ccc                vprintMp3Files(void*)
- *fill*         0x0000000000017cd6        0x2 ff
+                0x0000000000017cc4        0xa build/obj/L5_Application/main.o
+                0x0000000000017cc4                vprintMp3Files(void*)
+ *fill*         0x0000000000017cce        0x2 ff
  .text.startup.main
-                0x0000000000017cd8       0x90 build/obj/L5_Application/main.o
-                0x0000000000017cd8                main
+                0x0000000000017cd0       0x90 build/obj/L5_Application/main.o
+                0x0000000000017cd0                main
  .text._ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PPv
-                0x0000000000017d68       0x34 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
-                0x0000000000017d68                __cxxabiv1::__class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void**) const
+                0x0000000000017d60       0x34 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
+                0x0000000000017d60                __cxxabiv1::__class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void**) const
  .text._ZNK10__cxxabiv117__class_type_info20__do_find_public_srcEiPKvPKS0_S2_
-                0x0000000000017d9c        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
-                0x0000000000017d9c                __cxxabiv1::__class_type_info::__do_find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
+                0x0000000000017d94        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
+                0x0000000000017d94                __cxxabiv1::__class_type_info::__do_find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
  .text._ZN10__cxxabiv117__class_type_infoD2Ev
-                0x0000000000017da8       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
-                0x0000000000017da8                __cxxabiv1::__class_type_info::~__class_type_info()
-                0x0000000000017da8                __cxxabiv1::__class_type_info::~__class_type_info()
+                0x0000000000017da0       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
+                0x0000000000017da0                __cxxabiv1::__class_type_info::~__class_type_info()
+                0x0000000000017da0                __cxxabiv1::__class_type_info::~__class_type_info()
  .text._ZN10__cxxabiv117__class_type_infoD0Ev
-                0x0000000000017dbc       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
-                0x0000000000017dbc                __cxxabiv1::__class_type_info::~__class_type_info()
+                0x0000000000017db4       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
+                0x0000000000017db4                __cxxabiv1::__class_type_info::~__class_type_info()
  .text._ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PKvRNS0_15__upcast_resultE
-                0x0000000000017dd0       0x18 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
-                0x0000000000017dd0                __cxxabiv1::__class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__upcast_result&) const
+                0x0000000000017dc8       0x18 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
+                0x0000000000017dc8                __cxxabiv1::__class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__upcast_result&) const
  .text._ZNK10__cxxabiv117__class_type_info10__do_catchEPKSt9type_infoPPvj
-                0x0000000000017de8       0x2a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
-                0x0000000000017de8                __cxxabiv1::__class_type_info::__do_catch(std::type_info const*, void**, unsigned int) const
+                0x0000000000017de0       0x2a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
+                0x0000000000017de0                __cxxabiv1::__class_type_info::__do_catch(std::type_info const*, void**, unsigned int) const
  .text._ZNK10__cxxabiv117__class_type_info12__do_dyncastEiNS0_10__sub_kindEPKS0_PKvS3_S5_RNS0_16__dyncast_resultE
-                0x0000000000017e12       0x38 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
-                0x0000000000017e12                __cxxabiv1::__class_type_info::__do_dyncast(int, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
- *fill*         0x0000000000017e4a        0x2 ff
+                0x0000000000017e0a       0x38 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
+                0x0000000000017e0a                __cxxabiv1::__class_type_info::__do_dyncast(int, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+ *fill*         0x0000000000017e42        0x2 ff
  .text._ZN10__cxxabiv120__si_class_type_infoD2Ev
-                0x0000000000017e4c       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
-                0x0000000000017e4c                __cxxabiv1::__si_class_type_info::~__si_class_type_info()
-                0x0000000000017e4c                __cxxabiv1::__si_class_type_info::~__si_class_type_info()
+                0x0000000000017e44       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
+                0x0000000000017e44                __cxxabiv1::__si_class_type_info::~__si_class_type_info()
+                0x0000000000017e44                __cxxabiv1::__si_class_type_info::~__si_class_type_info()
  .text._ZN10__cxxabiv120__si_class_type_infoD0Ev
-                0x0000000000017e60       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
-                0x0000000000017e60                __cxxabiv1::__si_class_type_info::~__si_class_type_info()
+                0x0000000000017e58       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
+                0x0000000000017e58                __cxxabiv1::__si_class_type_info::~__si_class_type_info()
  .text._ZNK10__cxxabiv120__si_class_type_info20__do_find_public_srcEiPKvPKNS_17__class_type_infoES2_
-                0x0000000000017e74       0x38 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
-                0x0000000000017e74                __cxxabiv1::__si_class_type_info::__do_find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
+                0x0000000000017e6c       0x38 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
+                0x0000000000017e6c                __cxxabiv1::__si_class_type_info::__do_find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
  .text._ZNK10__cxxabiv120__si_class_type_info12__do_dyncastEiNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
-                0x0000000000017eac       0x7c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
-                0x0000000000017eac                __cxxabiv1::__si_class_type_info::__do_dyncast(int, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+                0x0000000000017ea4       0x7c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
+                0x0000000000017ea4                __cxxabiv1::__si_class_type_info::__do_dyncast(int, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
  .text._ZNK10__cxxabiv120__si_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
-                0x0000000000017f28       0x2a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
-                0x0000000000017f28                __cxxabiv1::__si_class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__upcast_result&) const
- .text._ZdlPvj  0x0000000000017f52        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(del_ops.o)
-                0x0000000000017f52                operator delete(void*, unsigned int)
+                0x0000000000017f20       0x2a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
+                0x0000000000017f20                __cxxabiv1::__si_class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__upcast_result&) const
+ .text._ZdlPvj  0x0000000000017f4a        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(del_ops.o)
+                0x0000000000017f4a                operator delete(void*, unsigned int)
  .text.__cxa_guard_acquire
-                0x0000000000017f56       0x18 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(guard.o)
-                0x0000000000017f56                __cxa_guard_acquire
+                0x0000000000017f4e       0x18 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(guard.o)
+                0x0000000000017f4e                __cxa_guard_acquire
  .text.__cxa_guard_release
-                0x0000000000017f6e        0x6 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(guard.o)
-                0x0000000000017f6e                __cxa_guard_release
+                0x0000000000017f66        0x6 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(guard.o)
+                0x0000000000017f66                __cxa_guard_release
  .text.__cxa_pure_virtual
-                0x0000000000017f74        0x6 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(pure.o)
-                0x0000000000017f74                __cxa_pure_virtual
- *fill*         0x0000000000017f7a        0x2 ff
+                0x0000000000017f6c        0x6 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(pure.o)
+                0x0000000000017f6c                __cxa_pure_virtual
+ *fill*         0x0000000000017f72        0x2 ff
  .text._ZN10__cxxabiv121__vmi_class_type_infoD2Ev
-                0x0000000000017f7c       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
-                0x0000000000017f7c                __cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info()
-                0x0000000000017f7c                __cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info()
+                0x0000000000017f74       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
+                0x0000000000017f74                __cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info()
+                0x0000000000017f74                __cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info()
  .text._ZN10__cxxabiv121__vmi_class_type_infoD0Ev
-                0x0000000000017f90       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
-                0x0000000000017f90                __cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info()
+                0x0000000000017f88       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
+                0x0000000000017f88                __cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info()
  .text._ZNK10__cxxabiv121__vmi_class_type_info20__do_find_public_srcEiPKvPKNS_17__class_type_infoES2_
-                0x0000000000017fa4       0x74 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
-                0x0000000000017fa4                __cxxabiv1::__vmi_class_type_info::__do_find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
+                0x0000000000017f9c       0x74 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
+                0x0000000000017f9c                __cxxabiv1::__vmi_class_type_info::__do_find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
  .text._ZNK10__cxxabiv117__class_type_info17__find_public_srcEiPKvPKS0_S2_
-                0x0000000000018018       0x2a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
-                0x0000000000018018                __cxxabiv1::__class_type_info::__find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
+                0x0000000000018010       0x2a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
+                0x0000000000018010                __cxxabiv1::__class_type_info::__find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
  .text._ZNK10__cxxabiv121__vmi_class_type_info12__do_dyncastEiNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
-                0x0000000000018042      0x292 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
-                0x0000000000018042                __cxxabiv1::__vmi_class_type_info::__do_dyncast(int, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+                0x000000000001803a      0x292 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
+                0x000000000001803a                __cxxabiv1::__vmi_class_type_info::__do_dyncast(int, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
  .text._ZNK10__cxxabiv121__vmi_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
-                0x00000000000182d4      0x12a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
-                0x00000000000182d4                __cxxabiv1::__vmi_class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__upcast_result&) const
+                0x00000000000182cc      0x12a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
+                0x00000000000182cc                __cxxabiv1::__vmi_class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__upcast_result&) const
  .text._ZNSt9type_infoD2Ev
-                0x00000000000183fe        0x2 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(tinfo.o)
-                0x00000000000183fe                std::type_info::~type_info()
-                0x00000000000183fe                std::type_info::~type_info()
+                0x00000000000183f6        0x2 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(tinfo.o)
+                0x00000000000183f6                std::type_info::~type_info()
+                0x00000000000183f6                std::type_info::~type_info()
  .text._ZNKSt9type_info15__is_function_pEv
-                0x0000000000018400        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(tinfo.o)
-                0x0000000000018400                std::type_info::__is_function_p() const
-                0x0000000000018400                std::type_info::__is_pointer_p() const
+                0x00000000000183f8        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(tinfo.o)
+                0x00000000000183f8                std::type_info::__is_function_p() const
+                0x00000000000183f8                std::type_info::__is_pointer_p() const
  .text._ZNKSt9type_infoeqERKS_
-                0x0000000000018404       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(tinfo.o)
-                0x0000000000018404                std::type_info::operator==(std::type_info const&) const
+                0x00000000000183fc       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(tinfo.o)
+                0x00000000000183fc                std::type_info::operator==(std::type_info const&) const
  .text._ZN10__cxxabiv111__terminateEPFvvE
-                0x0000000000018430        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(eh_terminate.o)
-                0x0000000000018430                __cxxabiv1::__terminate(void (*)())
+                0x0000000000018428        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(eh_terminate.o)
+                0x0000000000018428                __cxxabiv1::__terminate(void (*)())
  .text._ZSt13get_terminatev
-                0x0000000000018438       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(eh_terminate.o)
-                0x0000000000018438                std::get_terminate()
+                0x0000000000018430       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(eh_terminate.o)
+                0x0000000000018430                std::get_terminate()
  .text._ZSt9terminatev
-                0x0000000000018448        0xa /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(eh_terminate.o)
-                0x0000000000018448                std::terminate()
- *fill*         0x0000000000018452        0x2 ff
- .text          0x0000000000018454       0x18 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_ashldi3.o)
-                0x0000000000018454                __ashldi3
-                0x0000000000018454                __aeabi_llsl
- .text          0x000000000001846c      0x370 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_addsubdf3.o)
-                0x000000000001846c                __aeabi_drsub
-                0x0000000000018474                __aeabi_dsub
-                0x0000000000018474                __subdf3
-                0x0000000000018478                __adddf3
-                0x0000000000018478                __aeabi_dadd
-                0x00000000000186f0                __aeabi_ui2d
-                0x00000000000186f0                __floatunsidf
-                0x0000000000018710                __floatsidf
-                0x0000000000018710                __aeabi_i2d
-                0x0000000000018734                __extendsfdf2
-                0x0000000000018734                __aeabi_f2d
-                0x0000000000018770                __aeabi_ul2d
-                0x0000000000018770                __floatundidf
-                0x0000000000018780                __floatdidf
-                0x0000000000018780                __aeabi_l2d
- .text          0x00000000000187dc       0x40 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_fixunsdfsi.o)
-                0x00000000000187dc                __fixunsdfsi
-                0x00000000000187dc                __aeabi_d2uiz
- .text          0x000000000001881c       0xa0 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_truncdfsf2.o)
-                0x000000000001881c                __aeabi_d2f
-                0x000000000001881c                __truncdfsf2
- .text          0x00000000000188bc      0x21c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_addsubsf3.o)
-                0x00000000000188bc                __aeabi_frsub
-                0x00000000000188c4                __subsf3
-                0x00000000000188c4                __aeabi_fsub
-                0x00000000000188c8                __aeabi_fadd
-                0x00000000000188c8                __addsf3
-                0x0000000000018a28                __aeabi_ui2f
-                0x0000000000018a28                __floatunsisf
-                0x0000000000018a30                __aeabi_i2f
-                0x0000000000018a30                __floatsisf
-                0x0000000000018a4c                __floatundisf
-                0x0000000000018a4c                __aeabi_ul2f
-                0x0000000000018a5c                __floatdisf
-                0x0000000000018a5c                __aeabi_l2f
- .text          0x0000000000018ad8      0x2a0 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_muldivsf3.o)
-                0x0000000000018ad8                __mulsf3
-                0x0000000000018ad8                __aeabi_fmul
-                0x0000000000018c40                __divsf3
-                0x0000000000018c40                __aeabi_fdiv
- .text          0x0000000000018d78       0x40 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_fixunssfsi.o)
-                0x0000000000018d78                __aeabi_f2uiz
-                0x0000000000018d78                __fixunssfsi
- .text          0x0000000000018db8       0x30 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_aeabi_uldivmod.o)
-                0x0000000000018db8                __aeabi_uldivmod
- .text          0x0000000000018de8      0x2dc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
-                0x0000000000018de8                __udivmoddi4
- .text          0x00000000000190c4        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_dvmd_tls.o)
-                0x00000000000190c4                __aeabi_ldiv0
-                0x00000000000190c4                __aeabi_idiv0
- .text.abort    0x00000000000190c8        0xe /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-abort.o)
-                0x00000000000190c8                abort
- .text.atoi     0x00000000000190d6        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-atoi.o)
-                0x00000000000190d6                atoi
- *fill*         0x00000000000190de        0x2 ff
- .text.__errno  0x00000000000190e0        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-errno.o)
-                0x00000000000190e0                __errno
+                0x0000000000018440        0xa /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(eh_terminate.o)
+                0x0000000000018440                std::terminate()
+ *fill*         0x000000000001844a        0x2 ff
+ .text          0x000000000001844c       0x18 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_ashldi3.o)
+                0x000000000001844c                __ashldi3
+                0x000000000001844c                __aeabi_llsl
+ .text          0x0000000000018464      0x370 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_addsubdf3.o)
+                0x0000000000018464                __aeabi_drsub
+                0x000000000001846c                __aeabi_dsub
+                0x000000000001846c                __subdf3
+                0x0000000000018470                __adddf3
+                0x0000000000018470                __aeabi_dadd
+                0x00000000000186e8                __aeabi_ui2d
+                0x00000000000186e8                __floatunsidf
+                0x0000000000018708                __floatsidf
+                0x0000000000018708                __aeabi_i2d
+                0x000000000001872c                __extendsfdf2
+                0x000000000001872c                __aeabi_f2d
+                0x0000000000018768                __aeabi_ul2d
+                0x0000000000018768                __floatundidf
+                0x0000000000018778                __floatdidf
+                0x0000000000018778                __aeabi_l2d
+ .text          0x00000000000187d4       0x40 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_fixunsdfsi.o)
+                0x00000000000187d4                __fixunsdfsi
+                0x00000000000187d4                __aeabi_d2uiz
+ .text          0x0000000000018814       0xa0 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_truncdfsf2.o)
+                0x0000000000018814                __aeabi_d2f
+                0x0000000000018814                __truncdfsf2
+ .text          0x00000000000188b4      0x21c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_addsubsf3.o)
+                0x00000000000188b4                __aeabi_frsub
+                0x00000000000188bc                __subsf3
+                0x00000000000188bc                __aeabi_fsub
+                0x00000000000188c0                __aeabi_fadd
+                0x00000000000188c0                __addsf3
+                0x0000000000018a20                __aeabi_ui2f
+                0x0000000000018a20                __floatunsisf
+                0x0000000000018a28                __aeabi_i2f
+                0x0000000000018a28                __floatsisf
+                0x0000000000018a44                __floatundisf
+                0x0000000000018a44                __aeabi_ul2f
+                0x0000000000018a54                __floatdisf
+                0x0000000000018a54                __aeabi_l2f
+ .text          0x0000000000018ad0      0x2a0 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_muldivsf3.o)
+                0x0000000000018ad0                __mulsf3
+                0x0000000000018ad0                __aeabi_fmul
+                0x0000000000018c38                __divsf3
+                0x0000000000018c38                __aeabi_fdiv
+ .text          0x0000000000018d70       0x40 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_fixunssfsi.o)
+                0x0000000000018d70                __aeabi_f2uiz
+                0x0000000000018d70                __fixunssfsi
+ .text          0x0000000000018db0       0x30 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_aeabi_uldivmod.o)
+                0x0000000000018db0                __aeabi_uldivmod
+ .text          0x0000000000018de0      0x2dc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
+                0x0000000000018de0                __udivmoddi4
+ .text          0x00000000000190bc        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_dvmd_tls.o)
+                0x00000000000190bc                __aeabi_ldiv0
+                0x00000000000190bc                __aeabi_idiv0
+ .text.abort    0x00000000000190c0        0xe /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-abort.o)
+                0x00000000000190c0                abort
+ .text.atoi     0x00000000000190ce        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-atoi.o)
+                0x00000000000190ce                atoi
+ *fill*         0x00000000000190d6        0x2 ff
+ .text.__errno  0x00000000000190d8        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-errno.o)
+                0x00000000000190d8                __errno
  .text.__sflush_r
-                0x00000000000190ec      0x110 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-fflush.o)
-                0x00000000000190ec                __sflush_r
+                0x00000000000190e4      0x110 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-fflush.o)
+                0x00000000000190e4                __sflush_r
  .text._fflush_r
-                0x00000000000191fc       0x54 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-fflush.o)
-                0x00000000000191fc                _fflush_r
- .text.fflush   0x0000000000019250       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-fflush.o)
-                0x0000000000019250                fflush
+                0x00000000000191f4       0x54 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-fflush.o)
+                0x00000000000191f4                _fflush_r
+ .text.fflush   0x0000000000019248       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-fflush.o)
+                0x0000000000019248                fflush
  .text._cleanup_r
-                0x0000000000019274        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
-                0x0000000000019274                _cleanup_r
+                0x000000000001926c        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+                0x000000000001926c                _cleanup_r
  .text.std.isra.0
-                0x0000000000019280       0x48 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+                0x0000000000019278       0x48 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
  .text.__sfmoreglue
-                0x00000000000192c8       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
-                0x00000000000192c8                __sfmoreglue
- .text.__sinit  0x00000000000192f4       0x60 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
-                0x00000000000192f4                __sinit
- .text.__sfp    0x0000000000019354       0x78 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
-                0x0000000000019354                __sfp
- .text._fwalk   0x00000000000193cc       0x38 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-fwalk.o)
-                0x00000000000193cc                _fwalk
+                0x00000000000192c0       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+                0x00000000000192c0                __sfmoreglue
+ .text.__sinit  0x00000000000192ec       0x60 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+                0x00000000000192ec                __sinit
+ .text.__sfp    0x000000000001934c       0x78 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+                0x000000000001934c                __sfp
+ .text._fwalk   0x00000000000193c4       0x38 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-fwalk.o)
+                0x00000000000193c4                _fwalk
  .text._fwalk_reent
-                0x0000000000019404       0x3c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-fwalk.o)
-                0x0000000000019404                _fwalk_reent
+                0x00000000000193fc       0x3c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-fwalk.o)
+                0x00000000000193fc                _fwalk_reent
  .text.__libc_init_array
-                0x0000000000019440       0x48 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-init.o)
-                0x0000000000019440                __libc_init_array
+                0x0000000000019438       0x48 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-init.o)
+                0x0000000000019438                __libc_init_array
  .text.__locale_ctype_ptr_l
-                0x0000000000019488        0x6 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-locale.o)
-                0x0000000000019488                __locale_ctype_ptr_l
- *fill*         0x000000000001948e        0x2 ff
+                0x0000000000019480        0x6 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-locale.o)
+                0x0000000000019480                __locale_ctype_ptr_l
+ *fill*         0x0000000000019486        0x2 ff
  .text.__locale_ctype_ptr
-                0x0000000000019490       0x1c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-locale.o)
-                0x0000000000019490                __locale_ctype_ptr
+                0x0000000000019488       0x1c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-locale.o)
+                0x0000000000019488                __locale_ctype_ptr
  .text.__swhatbuf_r
-                0x00000000000194ac       0x48 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-makebuf.o)
-                0x00000000000194ac                __swhatbuf_r
+                0x00000000000194a4       0x48 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-makebuf.o)
+                0x00000000000194a4                __swhatbuf_r
  .text.__smakebuf_r
-                0x00000000000194f4       0x80 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-makebuf.o)
-                0x00000000000194f4                __smakebuf_r
- .text.malloc   0x0000000000019574       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-malloc.o)
-                0x0000000000019574                malloc
- .text.free     0x0000000000019584       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-malloc.o)
-                0x0000000000019584                free
+                0x00000000000194ec       0x80 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-makebuf.o)
+                0x00000000000194ec                __smakebuf_r
+ .text.malloc   0x000000000001956c       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-malloc.o)
+                0x000000000001956c                malloc
+ .text.free     0x000000000001957c       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-malloc.o)
+                0x000000000001957c                free
  .text.__ascii_mbtowc
-                0x0000000000019594       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mbtowc_r.o)
-                0x0000000000019594                __ascii_mbtowc
- .text.memchr   0x00000000000195b8       0x1c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memchr-stub.o)
-                0x00000000000195b8                memchr
- .text.memcmp   0x00000000000195d4       0x1e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcmp.o)
-                0x00000000000195d4                memcmp
- .text.memcpy   0x00000000000195f2       0x16 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcpy-stub.o)
-                0x00000000000195f2                memcpy
- .text.memmove  0x0000000000019608       0x34 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memmove.o)
-                0x0000000000019608                memmove
- .text.memset   0x000000000001963c       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
-                0x000000000001963c                memset
+                0x000000000001958c       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mbtowc_r.o)
+                0x000000000001958c                __ascii_mbtowc
+ .text.memchr   0x00000000000195b0       0x1c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memchr-stub.o)
+                0x00000000000195b0                memchr
+ .text.memcmp   0x00000000000195cc       0x1e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcmp.o)
+                0x00000000000195cc                memcmp
+ .text.memcpy   0x00000000000195ea       0x16 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcpy-stub.o)
+                0x00000000000195ea                memcpy
+ .text.memmove  0x0000000000019600       0x34 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memmove.o)
+                0x0000000000019600                memmove
+ .text.memset   0x0000000000019634       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
+                0x0000000000019634                memset
  .text.validate_structure
-                0x000000000001964c      0x1c0 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mktime.o)
- .text.mktime   0x000000000001980c      0x2f8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mktime.o)
-                0x000000000001980c                mktime
+                0x0000000000019644      0x1c0 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mktime.o)
+ .text.mktime   0x0000000000019804      0x2f8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mktime.o)
+                0x0000000000019804                mktime
  .text.mallinfo
-                0x0000000000019b04       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mstats.o)
-                0x0000000000019b04                mallinfo
+                0x0000000000019afc       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mstats.o)
+                0x0000000000019afc                mallinfo
  .text._calloc_r
-                0x0000000000019b18       0x1c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-callocr.o)
-                0x0000000000019b18                _calloc_r
- .text._free_r  0x0000000000019b34       0x98 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-freer.o)
-                0x0000000000019b34                _free_r
+                0x0000000000019b10       0x1c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-callocr.o)
+                0x0000000000019b10                _calloc_r
+ .text._free_r  0x0000000000019b2c       0x98 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-freer.o)
+                0x0000000000019b2c                _free_r
  .text._mallinfo_r
-                0x0000000000019bcc       0x64 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-mallinfor.o)
-                0x0000000000019bcc                _mallinfo_r
+                0x0000000000019bc4       0x64 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-mallinfor.o)
+                0x0000000000019bc4                _mallinfo_r
  .text._malloc_r
-                0x0000000000019c30       0xbc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-mallocr.o)
-                0x0000000000019c30                _malloc_r
- .text.__cvt    0x0000000000019cec       0xb8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_float.o)
-                0x0000000000019cec                __cvt
+                0x0000000000019c28       0xbc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-mallocr.o)
+                0x0000000000019c28                _malloc_r
+ .text.__cvt    0x0000000000019ce4       0xb8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_float.o)
+                0x0000000000019ce4                __cvt
  .text.__exponent
-                0x0000000000019da4       0x6a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_float.o)
-                0x0000000000019da4                __exponent
- *fill*         0x0000000000019e0e        0x2 ff
+                0x0000000000019d9c       0x6a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_float.o)
+                0x0000000000019d9c                __exponent
+ *fill*         0x0000000000019e06        0x2 ff
  .text._printf_float
-                0x0000000000019e10      0x470 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_float.o)
-                0x0000000000019e10                _printf_float
+                0x0000000000019e08      0x470 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_float.o)
+                0x0000000000019e08                _printf_float
  .text._printf_common
-                0x000000000001a280       0xee /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_i.o)
-                0x000000000001a280                _printf_common
- *fill*         0x000000000001a36e        0x2 ff
+                0x000000000001a278       0xee /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x000000000001a278                _printf_common
+ *fill*         0x000000000001a366        0x2 ff
  .text._printf_i
-                0x000000000001a370      0x240 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_i.o)
-                0x000000000001a370                _printf_i
+                0x000000000001a368      0x240 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x000000000001a368                _printf_i
  .text._scanf_float
-                0x000000000001a5b0      0x3c0 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_float.o)
-                0x000000000001a5b0                _scanf_float
- .text.printf   0x000000000001a970       0x30 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-printf.o)
-                0x000000000001a970                printf
-                0x000000000001a970                iprintf
- .text.putchar  0x000000000001a9a0       0x28 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-putchar.o)
-                0x000000000001a9a0                putchar
- .text._puts_r  0x000000000001a9c8       0xb8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-puts.o)
-                0x000000000001a9c8                _puts_r
- .text.puts     0x000000000001aa80       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-puts.o)
-                0x000000000001aa80                puts
- .text.srand    0x000000000001aa90       0x50 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-rand.o)
-                0x000000000001aa90                srand
- .text.rand     0x000000000001aae0       0x74 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-rand.o)
-                0x000000000001aae0                rand
- .text.realloc  0x000000000001ab54       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-realloc.o)
-                0x000000000001ab54                realloc
- .text.lflush   0x000000000001ab64       0x12 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-refill.o)
- *fill*         0x000000000001ab76        0x2 ff
+                0x000000000001a5a8      0x3c0 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_float.o)
+                0x000000000001a5a8                _scanf_float
+ .text.printf   0x000000000001a968       0x30 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-printf.o)
+                0x000000000001a968                printf
+                0x000000000001a968                iprintf
+ .text.putchar  0x000000000001a998       0x28 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-putchar.o)
+                0x000000000001a998                putchar
+ .text._puts_r  0x000000000001a9c0       0xb8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-puts.o)
+                0x000000000001a9c0                _puts_r
+ .text.puts     0x000000000001aa78       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-puts.o)
+                0x000000000001aa78                puts
+ .text.srand    0x000000000001aa88       0x50 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-rand.o)
+                0x000000000001aa88                srand
+ .text.rand     0x000000000001aad8       0x74 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-rand.o)
+                0x000000000001aad8                rand
+ .text.realloc  0x000000000001ab4c       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-realloc.o)
+                0x000000000001ab4c                realloc
+ .text.lflush   0x000000000001ab5c       0x12 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-refill.o)
+ *fill*         0x000000000001ab6e        0x2 ff
  .text.__srefill_r
-                0x000000000001ab78      0x118 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-refill.o)
-                0x000000000001ab78                __srefill_r
- .text._sbrk_r  0x000000000001ac90       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sbrkr.o)
-                0x000000000001ac90                _sbrk_r
- .text.scanf    0x000000000001acb0       0x30 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-scanf.o)
-                0x000000000001acb0                iscanf
-                0x000000000001acb0                scanf
- .text.setvbuf  0x000000000001ace0      0x15c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-setvbuf.o)
-                0x000000000001ace0                setvbuf
- .text.nanf     0x000000000001ae3c        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sf_nan.o)
-                0x000000000001ae3c                nanf
+                0x000000000001ab70      0x118 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-refill.o)
+                0x000000000001ab70                __srefill_r
+ .text._sbrk_r  0x000000000001ac88       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sbrkr.o)
+                0x000000000001ac88                _sbrk_r
+ .text.scanf    0x000000000001aca8       0x30 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-scanf.o)
+                0x000000000001aca8                iscanf
+                0x000000000001aca8                scanf
+ .text.setvbuf  0x000000000001acd8      0x15c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-setvbuf.o)
+                0x000000000001acd8                setvbuf
+ .text.nanf     0x000000000001ae34        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sf_nan.o)
+                0x000000000001ae34                nanf
  .text._raise_r
-                0x000000000001ae44       0x50 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-signal.o)
-                0x000000000001ae44                _raise_r
- .text.raise    0x000000000001ae94       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-signal.o)
-                0x000000000001ae94                raise
- .text._kill_r  0x000000000001aea4       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-signalr.o)
-                0x000000000001aea4                _kill_r
+                0x000000000001ae3c       0x50 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-signal.o)
+                0x000000000001ae3c                _raise_r
+ .text.raise    0x000000000001ae8c       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-signal.o)
+                0x000000000001ae8c                raise
+ .text._kill_r  0x000000000001ae9c       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-signalr.o)
+                0x000000000001ae9c                _kill_r
  .text._getpid_r
-                0x000000000001aec8        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-signalr.o)
-                0x000000000001aec8                _getpid_r
- .text.sprintf  0x000000000001aecc       0x48 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sprintf.o)
-                0x000000000001aecc                sprintf
-                0x000000000001aecc                siprintf
- .text.sscanf   0x000000000001af14       0x54 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sscanf.o)
-                0x000000000001af14                sscanf
-                0x000000000001af14                siscanf
- .text.__sread  0x000000000001af68       0x22 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-stdio.o)
-                0x000000000001af68                __sread
+                0x000000000001aec0        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-signalr.o)
+                0x000000000001aec0                _getpid_r
+ .text.sprintf  0x000000000001aec4       0x48 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sprintf.o)
+                0x000000000001aec4                sprintf
+                0x000000000001aec4                siprintf
+ .text.sscanf   0x000000000001af0c       0x54 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sscanf.o)
+                0x000000000001af0c                sscanf
+                0x000000000001af0c                siscanf
+ .text.__sread  0x000000000001af60       0x22 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-stdio.o)
+                0x000000000001af60                __sread
  .text.__seofread
-                0x000000000001af8a        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-stdio.o)
-                0x000000000001af8a                __seofread
+                0x000000000001af82        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-stdio.o)
+                0x000000000001af82                __seofread
  .text.__swrite
-                0x000000000001af8e       0x38 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-stdio.o)
-                0x000000000001af8e                __swrite
- .text.__sseek  0x000000000001afc6       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-stdio.o)
-                0x000000000001afc6                __sseek
+                0x000000000001af86       0x38 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-stdio.o)
+                0x000000000001af86                __swrite
+ .text.__sseek  0x000000000001afbe       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-stdio.o)
+                0x000000000001afbe                __sseek
  .text.__sclose
-                0x000000000001afea        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-stdio.o)
-                0x000000000001afea                __sclose
- .text.strcat   0x000000000001aff2       0x1e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strcat.o)
-                0x000000000001aff2                strcat
- .text          0x000000000001b010       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strcmp.o)
-                0x000000000001b010                strcmp
- .text.strcpy   0x000000000001b024       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strcpy.o)
-                0x000000000001b024                strcpy
- .text          0x000000000001b034       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strlen.o)
-                0x000000000001b034                strlen
- .text.strncmp  0x000000000001b044       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strncmp.o)
-                0x000000000001b044                strncmp
- .text.strncpy  0x000000000001b068       0x2a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strncpy.o)
-                0x000000000001b068                strncpy
- .text.strstr   0x000000000001b092       0x36 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strstr.o)
-                0x000000000001b092                strstr
+                0x000000000001afe2        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-stdio.o)
+                0x000000000001afe2                __sclose
+ .text.strcat   0x000000000001afea       0x1e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strcat.o)
+                0x000000000001afea                strcat
+ .text          0x000000000001b008       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strcmp.o)
+                0x000000000001b008                strcmp
+ .text.strcpy   0x000000000001b01c       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strcpy.o)
+                0x000000000001b01c                strcpy
+ .text          0x000000000001b02c       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strlen.o)
+                0x000000000001b02c                strlen
+ .text.strncmp  0x000000000001b03c       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strncmp.o)
+                0x000000000001b03c                strncmp
+ .text.strncpy  0x000000000001b060       0x2a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strncpy.o)
+                0x000000000001b060                strncpy
+ .text.strstr   0x000000000001b08a       0x36 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strstr.o)
+                0x000000000001b08a                strstr
  .text.unlikely.sulp
-                0x000000000001b0c8       0x42 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
- *fill*         0x000000000001b10a        0x6 ff
+                0x000000000001b0c0       0x42 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
+ *fill*         0x000000000001b102        0x6 ff
  .text._strtod_l
-                0x000000000001b110      0xbf0 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
-                0x000000000001b110                _strtod_l
+                0x000000000001b108      0xbf0 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
+                0x000000000001b108                _strtod_l
  .text._strtod_r
-                0x000000000001bd00       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
-                0x000000000001bd00                _strtod_r
+                0x000000000001bcf8       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
+                0x000000000001bcf8                _strtod_r
  .text._strtol_l.isra.0
-                0x000000000001bd20      0x100 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtol.o)
+                0x000000000001bd18      0x100 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtol.o)
  .text._strtol_r
-                0x000000000001be20       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtol.o)
-                0x000000000001be20                _strtol_r
- .text.strtol   0x000000000001be44       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtol.o)
-                0x000000000001be44                strtol
- .text.time     0x000000000001be70       0x28 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-time.o)
-                0x000000000001be70                time
+                0x000000000001be18       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtol.o)
+                0x000000000001be18                _strtol_r
+ .text.strtol   0x000000000001be3c       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtol.o)
+                0x000000000001be3c                strtol
+ .text.time     0x000000000001be68       0x28 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-time.o)
+                0x000000000001be68                time
  .text.__tzcalc_limits
-                0x000000000001be98      0x150 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzcalc_limits.o)
-                0x000000000001be98                __tzcalc_limits
+                0x000000000001be90      0x150 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzcalc_limits.o)
+                0x000000000001be90                __tzcalc_limits
  .text.__tz_lock
-                0x000000000001bfe8        0x2 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzlock.o)
-                0x000000000001bfe8                __tz_lock
+                0x000000000001bfe0        0x2 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzlock.o)
+                0x000000000001bfe0                __tz_lock
  .text.__tz_unlock
-                0x000000000001bfea        0x2 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzlock.o)
-                0x000000000001bfea                __tz_unlock
+                0x000000000001bfe2        0x2 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzlock.o)
+                0x000000000001bfe2                __tz_unlock
  .text._tzset_unlocked
-                0x000000000001bfec        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzset.o)
-                0x000000000001bfec                _tzset_unlocked
+                0x000000000001bfe4        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzset.o)
+                0x000000000001bfe4                _tzset_unlocked
  .text._tzset_unlocked_r
-                0x000000000001bff8      0x304 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzset_r.o)
-                0x000000000001bff8                _tzset_unlocked_r
+                0x000000000001bff0      0x304 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzset_r.o)
+                0x000000000001bff0                _tzset_unlocked_r
  .text._vsnprintf_r
-                0x000000000001c2fc       0x58 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-vsnprintf.o)
-                0x000000000001c2fc                _vsnprintf_r
-                0x000000000001c2fc                _vsniprintf_r
+                0x000000000001c2f4       0x58 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-vsnprintf.o)
+                0x000000000001c2f4                _vsnprintf_r
+                0x000000000001c2f4                _vsniprintf_r
  .text.vsnprintf
-                0x000000000001c354       0x1c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-vsnprintf.o)
-                0x000000000001c354                vsnprintf
-                0x000000000001c354                vsniprintf
+                0x000000000001c34c       0x1c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-vsnprintf.o)
+                0x000000000001c34c                vsnprintf
+                0x000000000001c34c                vsniprintf
  .text.__swbuf_r
-                0x000000000001c370       0xa4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-wbuf.o)
-                0x000000000001c370                __swbuf_r
+                0x000000000001c368       0xa4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-wbuf.o)
+                0x000000000001c368                __swbuf_r
  .text.__ascii_wctomb
-                0x000000000001c414       0x1a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-wctomb_r.o)
-                0x000000000001c414                __ascii_wctomb
- *fill*         0x000000000001c42e        0x2 ff
+                0x000000000001c40c       0x1a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-wctomb_r.o)
+                0x000000000001c40c                __ascii_wctomb
+ *fill*         0x000000000001c426        0x2 ff
  .text._write_r
-                0x000000000001c430       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-writer.o)
-                0x000000000001c430                _write_r
+                0x000000000001c428       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-writer.o)
+                0x000000000001c428                _write_r
  .text.__swsetup_r
-                0x000000000001c454       0xdc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-wsetup.o)
-                0x000000000001c454                __swsetup_r
+                0x000000000001c44c       0xdc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-wsetup.o)
+                0x000000000001c44c                __swsetup_r
  .text._close_r
-                0x000000000001c530       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-closer.o)
-                0x000000000001c530                _close_r
- .text.div      0x000000000001c550       0x28 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-div.o)
-                0x000000000001c550                div
- .text.quorem   0x000000000001c578      0x118 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-dtoa.o)
- .text._dtoa_r  0x000000000001c690      0xba8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-dtoa.o)
-                0x000000000001c690                _dtoa_r
+                0x000000000001c528       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-closer.o)
+                0x000000000001c528                _close_r
+ .text.div      0x000000000001c548       0x28 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-div.o)
+                0x000000000001c548                div
+ .text.quorem   0x000000000001c570      0x118 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-dtoa.o)
+ .text._dtoa_r  0x000000000001c688      0xba8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-dtoa.o)
+                0x000000000001c688                _dtoa_r
  .text._fstat_r
-                0x000000000001d238       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-fstatr.o)
-                0x000000000001d238                _fstat_r
- .text.rshift   0x000000000001d25c       0x6a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gdtoa-gethex.o)
+                0x000000000001d230       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-fstatr.o)
+                0x000000000001d230                _fstat_r
+ .text.rshift   0x000000000001d254       0x6a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gdtoa-gethex.o)
  .text.__hexdig_fun
-                0x000000000001d2c6       0x2a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gdtoa-gethex.o)
-                0x000000000001d2c6                __hexdig_fun
+                0x000000000001d2be       0x2a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gdtoa-gethex.o)
+                0x000000000001d2be                __hexdig_fun
  .text.__gethex
-                0x000000000001d2f0      0x43e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gdtoa-gethex.o)
-                0x000000000001d2f0                __gethex
- .text.L_shift  0x000000000001d72e       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gdtoa-hexnan.o)
- .text.__match  0x000000000001d752       0x26 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gdtoa-hexnan.o)
-                0x000000000001d752                __match
+                0x000000000001d2e8      0x43e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gdtoa-gethex.o)
+                0x000000000001d2e8                __gethex
+ .text.L_shift  0x000000000001d726       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gdtoa-hexnan.o)
+ .text.__match  0x000000000001d74a       0x26 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gdtoa-hexnan.o)
+                0x000000000001d74a                __match
  .text.__hexnan
-                0x000000000001d778      0x120 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gdtoa-hexnan.o)
-                0x000000000001d778                __hexnan
+                0x000000000001d770      0x120 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gdtoa-hexnan.o)
+                0x000000000001d770                __hexnan
  .text._findenv_r
-                0x000000000001d898       0x80 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-getenv_r.o)
-                0x000000000001d898                _findenv_r
+                0x000000000001d890       0x80 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-getenv_r.o)
+                0x000000000001d890                _findenv_r
  .text._getenv_r
-                0x000000000001d918        0xe /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-getenv_r.o)
-                0x000000000001d918                _getenv_r
- *fill*         0x000000000001d926        0x2 ff
+                0x000000000001d910        0xe /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-getenv_r.o)
+                0x000000000001d910                _getenv_r
+ *fill*         0x000000000001d91e        0x2 ff
  .text._gettimeofday_r
-                0x000000000001d928       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gettimeofdayr.o)
-                0x000000000001d928                _gettimeofday_r
+                0x000000000001d920       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gettimeofdayr.o)
+                0x000000000001d920                _gettimeofday_r
  .text.__gettzinfo
-                0x000000000001d94c        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gettzinfo.o)
-                0x000000000001d94c                __gettzinfo
+                0x000000000001d944        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-gettzinfo.o)
+                0x000000000001d944                __gettzinfo
  .text._isatty_r
-                0x000000000001d954       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-isattyr.o)
-                0x000000000001d954                _isatty_r
+                0x000000000001d94c       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-isattyr.o)
+                0x000000000001d94c                _isatty_r
  .text.__localeconv_l
-                0x000000000001d974        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-localeconv.o)
-                0x000000000001d974                __localeconv_l
+                0x000000000001d96c        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-localeconv.o)
+                0x000000000001d96c                __localeconv_l
  .text._localeconv_r
-                0x000000000001d978       0x1c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-localeconv.o)
-                0x000000000001d978                _localeconv_r
+                0x000000000001d970       0x1c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-localeconv.o)
+                0x000000000001d970                _localeconv_r
  .text._lseek_r
-                0x000000000001d994       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-lseekr.o)
-                0x000000000001d994                _lseek_r
- .text._Balloc  0x000000000001d9b8       0x68 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001d9b8                _Balloc
- .text._Bfree   0x000000000001da20       0x2e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001da20                _Bfree
+                0x000000000001d98c       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-lseekr.o)
+                0x000000000001d98c                _lseek_r
+ .text._Balloc  0x000000000001d9b0       0x68 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001d9b0                _Balloc
+ .text._Bfree   0x000000000001da18       0x2e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001da18                _Bfree
  .text.__multadd
-                0x000000000001da4e       0x76 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001da4e                __multadd
- .text.__s2b    0x000000000001dac4       0x7c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001dac4                __s2b
+                0x000000000001da46       0x76 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001da46                __multadd
+ .text.__s2b    0x000000000001dabc       0x7c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001dabc                __s2b
  .text.__hi0bits
-                0x000000000001db40       0x3e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001db40                __hi0bits
+                0x000000000001db38       0x3e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001db38                __hi0bits
  .text.__lo0bits
-                0x000000000001db7e       0x5e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001db7e                __lo0bits
- .text.__i2b    0x000000000001dbdc       0x12 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001dbdc                __i2b
+                0x000000000001db76       0x5e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001db76                __lo0bits
+ .text.__i2b    0x000000000001dbd4       0x12 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001dbd4                __i2b
  .text.__multiply
-                0x000000000001dbee      0x118 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001dbee                __multiply
- *fill*         0x000000000001dd06        0x2 ff
+                0x000000000001dbe6      0x118 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001dbe6                __multiply
+ *fill*         0x000000000001dcfe        0x2 ff
  .text.__pow5mult
-                0x000000000001dd08       0x9c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001dd08                __pow5mult
+                0x000000000001dd00       0x9c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001dd00                __pow5mult
  .text.__lshift
-                0x000000000001dda4       0xa2 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001dda4                __lshift
- .text.__mcmp   0x000000000001de46       0x34 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001de46                __mcmp
- .text.__mdiff  0x000000000001de7a       0xbe /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001de7a                __mdiff
- .text.__ulp    0x000000000001df38       0x48 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001df38                __ulp
- .text.__b2d    0x000000000001df80       0xa4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001df80                __b2d
- .text.__d2b    0x000000000001e024       0x9e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001e024                __d2b
- .text.__ratio  0x000000000001e0c2       0x50 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001e0c2                __ratio
+                0x000000000001dd9c       0xa2 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001dd9c                __lshift
+ .text.__mcmp   0x000000000001de3e       0x34 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001de3e                __mcmp
+ .text.__mdiff  0x000000000001de72       0xbe /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001de72                __mdiff
+ .text.__ulp    0x000000000001df30       0x48 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001df30                __ulp
+ .text.__b2d    0x000000000001df78       0xa4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001df78                __b2d
+ .text.__d2b    0x000000000001e01c       0x9e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001e01c                __d2b
+ .text.__ratio  0x000000000001e0ba       0x50 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001e0ba                __ratio
  .text.__copybits
-                0x000000000001e112       0x34 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001e112                __copybits
+                0x000000000001e10a       0x34 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001e10a                __copybits
  .text.__any_on
-                0x000000000001e146       0x42 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x000000000001e146                __any_on
+                0x000000000001e13e       0x42 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x000000000001e13e                __any_on
  .text._realloc_r
-                0x000000000001e188       0x4c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-reallocr.o)
-                0x000000000001e188                _realloc_r
+                0x000000000001e180       0x4c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-reallocr.o)
+                0x000000000001e180                _realloc_r
  .text.__ssputs_r
-                0x000000000001e1d4       0xb6 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfprintf.o)
-                0x000000000001e1d4                __ssputs_r
- *fill*         0x000000000001e28a        0x2 ff
+                0x000000000001e1cc       0xb6 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfprintf.o)
+                0x000000000001e1cc                __ssputs_r
+ *fill*         0x000000000001e282        0x2 ff
  .text._svfprintf_r
-                0x000000000001e28c      0x1e8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfprintf.o)
-                0x000000000001e28c                _svfprintf_r
-                0x000000000001e28c                _svfiprintf_r
+                0x000000000001e284      0x1e8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfprintf.o)
+                0x000000000001e284                _svfprintf_r
+                0x000000000001e284                _svfiprintf_r
  .text._sungetc_r
-                0x000000000001e474       0x7a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfscanf.o)
-                0x000000000001e474                _sungetc_r
+                0x000000000001e46c       0x7a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfscanf.o)
+                0x000000000001e46c                _sungetc_r
  .text.__ssrefill_r
-                0x000000000001e4ee       0x3a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfscanf.o)
-                0x000000000001e4ee                __ssrefill_r
+                0x000000000001e4e6       0x3a /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfscanf.o)
+                0x000000000001e4e6                __ssrefill_r
  .text.__ssvfscanf_r
-                0x000000000001e528      0x2a8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfscanf.o)
-                0x000000000001e528                __ssvfscanf_r
-                0x000000000001e528                __ssvfiscanf_r
+                0x000000000001e520      0x2a8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfscanf.o)
+                0x000000000001e520                __ssvfscanf_r
+                0x000000000001e520                __ssvfiscanf_r
  .text.__sfputc_r
-                0x000000000001e7d0       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf.o)
+                0x000000000001e7c8       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf.o)
  .text.__sfputs_r
-                0x000000000001e7fc       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf.o)
-                0x000000000001e7fc                __sfputs_r
+                0x000000000001e7f4       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf.o)
+                0x000000000001e7f4                __sfputs_r
  .text._vfprintf_r
-                0x000000000001e820      0x22c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf.o)
-                0x000000000001e820                _vfiprintf_r
-                0x000000000001e820                _vfprintf_r
+                0x000000000001e818      0x22c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf.o)
+                0x000000000001e818                _vfiprintf_r
+                0x000000000001e818                _vfprintf_r
  .text.__svfscanf_r
-                0x000000000001ea4c      0x2a8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf.o)
-                0x000000000001ea4c                __svfiscanf_r
-                0x000000000001ea4c                __svfscanf_r
+                0x000000000001ea44      0x2a8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf.o)
+                0x000000000001ea44                __svfiscanf_r
+                0x000000000001ea44                __svfscanf_r
  .text._vfscanf_r
-                0x000000000001ecf4       0x50 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf.o)
-                0x000000000001ecf4                _vfiscanf_r
-                0x000000000001ecf4                _vfscanf_r
+                0x000000000001ecec       0x50 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf.o)
+                0x000000000001ecec                _vfiscanf_r
+                0x000000000001ecec                _vfscanf_r
  .text._scanf_chars
-                0x000000000001ed44       0xc6 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_i.o)
-                0x000000000001ed44                _scanf_chars
- *fill*         0x000000000001ee0a        0x2 ff
+                0x000000000001ed3c       0xc6 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_i.o)
+                0x000000000001ed3c                _scanf_chars
+ *fill*         0x000000000001ee02        0x2 ff
  .text._scanf_i
-                0x000000000001ee0c      0x1ec /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_i.o)
-                0x000000000001ee0c                _scanf_i
- .text._putc_r  0x000000000001eff8       0x6c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-putc.o)
-                0x000000000001eff8                _putc_r
- .text._read_r  0x000000000001f064       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-readr.o)
-                0x000000000001f064                _read_r
- .text.__sccl   0x000000000001f088       0x5e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sccl.o)
-                0x000000000001f088                __sccl
+                0x000000000001ee04      0x1ec /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_i.o)
+                0x000000000001ee04                _scanf_i
+ .text._putc_r  0x000000000001eff0       0x6c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-putc.o)
+                0x000000000001eff0                _putc_r
+ .text._read_r  0x000000000001f05c       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-readr.o)
+                0x000000000001f05c                _read_r
+ .text.__sccl   0x000000000001f080       0x5e /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sccl.o)
+                0x000000000001f080                __sccl
  .text._strtoul_l.isra.0
-                0x000000000001f0e6       0xfa /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtoul.o)
+                0x000000000001f0de       0xfa /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtoul.o)
  .text._strtoul_r
-                0x000000000001f1e0       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtoul.o)
-                0x000000000001f1e0                _strtoul_r
- .text.strtoul  0x000000000001f204       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtoul.o)
-                0x000000000001f204                strtoul
+                0x000000000001f1d8       0x24 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtoul.o)
+                0x000000000001f1d8                _strtoul_r
+ .text.strtoul  0x000000000001f1fc       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtoul.o)
+                0x000000000001f1fc                strtoul
  .text.__submore
-                0x000000000001f230       0x72 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-ungetc.o)
-                0x000000000001f230                __submore
- *fill*         0x000000000001f2a2        0x2 ff
+                0x000000000001f228       0x72 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-ungetc.o)
+                0x000000000001f228                __submore
+ *fill*         0x000000000001f29a        0x2 ff
  .text._ungetc_r
-                0x000000000001f2a4       0xe4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-ungetc.o)
-                0x000000000001f2a4                _ungetc_r
+                0x000000000001f29c       0xe4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-ungetc.o)
+                0x000000000001f29c                _ungetc_r
  .text.__env_lock
-                0x000000000001f388        0x2 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-envlock.o)
-                0x000000000001f388                __env_lock
+                0x000000000001f380        0x2 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-envlock.o)
+                0x000000000001f380                __env_lock
  .text.__env_unlock
-                0x000000000001f38a        0x2 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-envlock.o)
-                0x000000000001f38a                __env_unlock
+                0x000000000001f382        0x2 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-envlock.o)
+                0x000000000001f382                __env_unlock
  .text._malloc_usable_size_r
-                0x000000000001f38c       0x12 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-msizer.o)
-                0x000000000001f38c                _malloc_usable_size_r
- *fill*         0x000000000001f39e        0x2 ff
- .text          0x000000000001f3a0      0x424 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_muldivdf3.o)
-                0x000000000001f3a0                __aeabi_dmul
-                0x000000000001f3a0                __muldf3
-                0x000000000001f5f4                __aeabi_ddiv
-                0x000000000001f5f4                __divdf3
- .text          0x000000000001f7c4      0x110 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_cmpdf2.o)
-                0x000000000001f7c4                __gtdf2
-                0x000000000001f7c4                __gedf2
-                0x000000000001f7cc                __ltdf2
-                0x000000000001f7cc                __ledf2
-                0x000000000001f7d4                __cmpdf2
-                0x000000000001f7d4                __eqdf2
-                0x000000000001f7d4                __nedf2
-                0x000000000001f850                __aeabi_cdrcmple
-                0x000000000001f860                __aeabi_cdcmple
-                0x000000000001f860                __aeabi_cdcmpeq
-                0x000000000001f870                __aeabi_dcmpeq
-                0x000000000001f884                __aeabi_dcmplt
-                0x000000000001f898                __aeabi_dcmple
-                0x000000000001f8ac                __aeabi_dcmpge
-                0x000000000001f8c0                __aeabi_dcmpgt
- .text          0x000000000001f8d4       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_unorddf2.o)
-                0x000000000001f8d4                __aeabi_dcmpun
-                0x000000000001f8d4                __unorddf2
- .text          0x000000000001f900       0x50 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_fixdfsi.o)
-                0x000000000001f900                __fixdfsi
-                0x000000000001f900                __aeabi_d2iz
+                0x000000000001f384       0x12 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-msizer.o)
+                0x000000000001f384                _malloc_usable_size_r
+ *fill*         0x000000000001f396        0x2 ff
+ .text          0x000000000001f398      0x424 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_muldivdf3.o)
+                0x000000000001f398                __aeabi_dmul
+                0x000000000001f398                __muldf3
+                0x000000000001f5ec                __aeabi_ddiv
+                0x000000000001f5ec                __divdf3
+ .text          0x000000000001f7bc      0x110 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_cmpdf2.o)
+                0x000000000001f7bc                __gtdf2
+                0x000000000001f7bc                __gedf2
+                0x000000000001f7c4                __ltdf2
+                0x000000000001f7c4                __ledf2
+                0x000000000001f7cc                __cmpdf2
+                0x000000000001f7cc                __eqdf2
+                0x000000000001f7cc                __nedf2
+                0x000000000001f848                __aeabi_cdrcmple
+                0x000000000001f858                __aeabi_cdcmple
+                0x000000000001f858                __aeabi_cdcmpeq
+                0x000000000001f868                __aeabi_dcmpeq
+                0x000000000001f87c                __aeabi_dcmplt
+                0x000000000001f890                __aeabi_dcmple
+                0x000000000001f8a4                __aeabi_dcmpge
+                0x000000000001f8b8                __aeabi_dcmpgt
+ .text          0x000000000001f8cc       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_unorddf2.o)
+                0x000000000001f8cc                __aeabi_dcmpun
+                0x000000000001f8cc                __unorddf2
+ .text          0x000000000001f8f8       0x50 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_arm_fixdfsi.o)
+                0x000000000001f8f8                __fixdfsi
+                0x000000000001f8f8                __aeabi_d2iz
  *(.rodata .rodata.*)
  .rodata._Z14low_level_initv.str1.1
-                0x000000000001f950       0x5d build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/low_level_init.o
+                0x000000000001f948       0x5d build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/low_level_init.o
                                          0x77 (size before relaxing)
  .rodata.TIMER1_IRQHandler.str1.1
-                0x000000000001f9ad       0x21 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/lpc_sys.o
+                0x000000000001f9a5       0x21 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/lpc_sys.o
  .rodata.sys_get_mem_info_str.str1.1
-                0x000000000001f9ce       0xc5 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/lpc_sys.o
+                0x000000000001f9c6       0xc5 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/lpc_sys.o
  .rodata.isr_forwarder_routine.str1.1
-                0x000000000001fa93       0x37 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/startup.o
+                0x000000000001fa8b       0x37 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/startup.o
  .rodata.str1.1
-                0x000000000001faca       0x79 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/startup.o
+                0x000000000001fac2       0x79 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/startup.o
  .rodata.vApplicationMallocFailedHook.str1.1
-                0x000000000001fb43       0x36 build/obj//home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/hooks/hooks.o
+                0x000000000001fb3b       0x36 build/obj//home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/hooks/hooks.o
  .rodata.vApplicationStackOverflowHook.str1.1
-                0x000000000001fb79       0x55 build/obj//home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/hooks/hooks.o
+                0x000000000001fb71       0x55 build/obj//home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/hooks/hooks.o
  .rodata.vTaskStartScheduler.str1.1
-                0x000000000001fbce        0x5 build/obj//home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/src/tasks.o
- *fill*         0x000000000001fbd3        0x1 ff
+                0x000000000001fbc6        0x5 build/obj//home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/src/tasks.o
+ *fill*         0x000000000001fbcb        0x1 ff
  .rodata._ZTI7CharDev
-                0x000000000001fbd4        0x8 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/char_dev.o
-                0x000000000001fbd4                typeinfo for CharDev
+                0x000000000001fbcc        0x8 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/char_dev.o
+                0x000000000001fbcc                typeinfo for CharDev
  .rodata._ZTS7CharDev
-                0x000000000001fbdc        0x9 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/char_dev.o
-                0x000000000001fbdc                typeinfo name for CharDev
- *fill*         0x000000000001fbe5        0x3 ff
+                0x000000000001fbd4        0x9 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/char_dev.o
+                0x000000000001fbd4                typeinfo name for CharDev
+ *fill*         0x000000000001fbdd        0x3 ff
  .rodata._ZTV7CharDev
-                0x000000000001fbe8       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/char_dev.o
-                0x000000000001fbe8                vtable for CharDev
+                0x000000000001fbe0       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/char_dev.o
+                0x000000000001fbe0                vtable for CharDev
  .rodata._ZTI7UartDev
-                0x000000000001fc04        0xc build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/uart_dev.o
-                0x000000000001fc04                typeinfo for UartDev
+                0x000000000001fbfc        0xc build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/uart_dev.o
+                0x000000000001fbfc                typeinfo for UartDev
  .rodata._ZTS7UartDev
-                0x000000000001fc10        0x9 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/uart_dev.o
-                0x000000000001fc10                typeinfo name for UartDev
- *fill*         0x000000000001fc19        0x3 ff
+                0x000000000001fc08        0x9 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/uart_dev.o
+                0x000000000001fc08                typeinfo name for UartDev
+ *fill*         0x000000000001fc11        0x3 ff
  .rodata._ZTV7UartDev
-                0x000000000001fc1c       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/uart_dev.o
-                0x000000000001fc1c                vtable for UartDev
- .rodata        0x000000000001fc38       0x10 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/lpc_timers.o
+                0x000000000001fc14       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/uart_dev.o
+                0x000000000001fc14                vtable for UartDev
+ .rodata        0x000000000001fc30       0x10 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/lpc_timers.o
  .rodata._ZTS17SingletonTemplateI5Uart0E
-                0x000000000001fc48       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart0.o
-                0x000000000001fc48                typeinfo name for SingletonTemplate<Uart0>
+                0x000000000001fc40       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart0.o
+                0x000000000001fc40                typeinfo name for SingletonTemplate<Uart0>
  .rodata._ZTI17SingletonTemplateI5Uart0E
-                0x000000000001fc64        0x8 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart0.o
-                0x000000000001fc64                typeinfo for SingletonTemplate<Uart0>
+                0x000000000001fc5c        0x8 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart0.o
+                0x000000000001fc5c                typeinfo for SingletonTemplate<Uart0>
  .rodata._ZTS5Uart0
-                0x000000000001fc6c        0x7 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart0.o
-                0x000000000001fc6c                typeinfo name for Uart0
- *fill*         0x000000000001fc73        0x1 ff
+                0x000000000001fc64        0x7 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart0.o
+                0x000000000001fc64                typeinfo name for Uart0
+ *fill*         0x000000000001fc6b        0x1 ff
  .rodata._ZTI5Uart0
-                0x000000000001fc74       0x20 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart0.o
-                0x000000000001fc74                typeinfo for Uart0
+                0x000000000001fc6c       0x20 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart0.o
+                0x000000000001fc6c                typeinfo for Uart0
  .rodata._ZTV5Uart0
-                0x000000000001fc94       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart0.o
-                0x000000000001fc94                vtable for Uart0
+                0x000000000001fc8c       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart0.o
+                0x000000000001fc8c                vtable for Uart0
  .rodata._ZTS17SingletonTemplateI5Uart2E
-                0x000000000001fcb0       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart2.o
-                0x000000000001fcb0                typeinfo name for SingletonTemplate<Uart2>
+                0x000000000001fca8       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart2.o
+                0x000000000001fca8                typeinfo name for SingletonTemplate<Uart2>
  .rodata._ZTI17SingletonTemplateI5Uart2E
-                0x000000000001fccc        0x8 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart2.o
-                0x000000000001fccc                typeinfo for SingletonTemplate<Uart2>
+                0x000000000001fcc4        0x8 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart2.o
+                0x000000000001fcc4                typeinfo for SingletonTemplate<Uart2>
  .rodata._ZTS5Uart2
-                0x000000000001fcd4        0x7 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart2.o
-                0x000000000001fcd4                typeinfo name for Uart2
- *fill*         0x000000000001fcdb        0x1 ff
+                0x000000000001fccc        0x7 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart2.o
+                0x000000000001fccc                typeinfo name for Uart2
+ *fill*         0x000000000001fcd3        0x1 ff
  .rodata._ZTI5Uart2
-                0x000000000001fcdc       0x20 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart2.o
-                0x000000000001fcdc                typeinfo for Uart2
+                0x000000000001fcd4       0x20 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart2.o
+                0x000000000001fcd4                typeinfo for Uart2
  .rodata._ZTV5Uart2
-                0x000000000001fcfc       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart2.o
-                0x000000000001fcfc                vtable for Uart2
+                0x000000000001fcf4       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart2.o
+                0x000000000001fcf4                vtable for Uart2
  .rodata._ZTS17SingletonTemplateI5Uart3E
-                0x000000000001fd18       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart3.o
-                0x000000000001fd18                typeinfo name for SingletonTemplate<Uart3>
+                0x000000000001fd10       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart3.o
+                0x000000000001fd10                typeinfo name for SingletonTemplate<Uart3>
  .rodata._ZTI17SingletonTemplateI5Uart3E
-                0x000000000001fd34        0x8 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart3.o
-                0x000000000001fd34                typeinfo for SingletonTemplate<Uart3>
+                0x000000000001fd2c        0x8 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart3.o
+                0x000000000001fd2c                typeinfo for SingletonTemplate<Uart3>
  .rodata._ZTS5Uart3
-                0x000000000001fd3c        0x7 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart3.o
-                0x000000000001fd3c                typeinfo name for Uart3
- *fill*         0x000000000001fd43        0x1 ff
+                0x000000000001fd34        0x7 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart3.o
+                0x000000000001fd34                typeinfo name for Uart3
+ *fill*         0x000000000001fd3b        0x1 ff
  .rodata._ZTI5Uart3
-                0x000000000001fd44       0x20 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart3.o
-                0x000000000001fd44                typeinfo for Uart3
+                0x000000000001fd3c       0x20 build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart3.o
+                0x000000000001fd3c                typeinfo for Uart3
  .rodata._ZTV5Uart3
-                0x000000000001fd64       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart3.o
-                0x000000000001fd64                vtable for Uart3
+                0x000000000001fd5c       0x1c build/obj//home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/src/uart3.o
+                0x000000000001fd5c                vtable for Uart3
  .rodata.logger_init.str1.1
-                0x000000000001fd80       0x2c build/obj//home/bionia/SJSU-Dev/firmware/lib/L3_Utils/src/file_logger.o
+                0x000000000001fd78       0x2c build/obj//home/bionia/SJSU-Dev/firmware/lib/L3_Utils/src/file_logger.o
  .rodata.logger_write_to_file.str1.1
-                0x000000000001fdac       0x51 build/obj//home/bionia/SJSU-Dev/firmware/lib/L3_Utils/src/file_logger.o
- .rodata        0x000000000001fdfd        0x7 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/disk/spi_flash.o
+                0x000000000001fda4       0x51 build/obj//home/bionia/SJSU-Dev/firmware/lib/L3_Utils/src/file_logger.o
+ .rodata        0x000000000001fdf5        0x7 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/disk/spi_flash.o
  .rodata.CSWTCH.70
-                0x000000000001fe04       0x10 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/disk/spi_flash.o
+                0x000000000001fdfc       0x10 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/disk/spi_flash.o
  .rodata.flash_read_sectors.str1.1
-                0x000000000001fe14       0x2f build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/disk/spi_flash.o
- .rodata.ExCvt  0x000000000001fe43       0x80 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.o
+                0x000000000001fe0c       0x2f build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/disk/spi_flash.o
+ .rodata.ExCvt  0x000000000001fe3b       0x80 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.o
  .rodata.LfnOfs
-                0x000000000001fec3        0xd build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.o
+                0x000000000001febb        0xd build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.o
  .rodata.cst.6348
-                0x000000000001fed0       0x16 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.o
+                0x000000000001fec8       0x16 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.o
  .rodata.f_mkfs.str1.1
-                0x000000000001fee6       0x34 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.o
+                0x000000000001fede       0x34 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.o
  .rodata.follow_path.str1.1
-                0x000000000001ff1a       0x10 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.o
+                0x000000000001ff12       0x10 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.o
  .rodata.vst.6347
-                0x000000000001ff2a       0x16 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.o
- .rodata.Tbl    0x000000000001ff40      0x100 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/option/ccsbcs.o
+                0x000000000001ff22       0x16 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/ff.o
+ .rodata.Tbl    0x000000000001ff38      0x100 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/option/ccsbcs.o
  .rodata.tbl_lower.5775
-                0x0000000000020040      0x1e0 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/option/ccsbcs.o
+                0x0000000000020038      0x1e0 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/option/ccsbcs.o
  .rodata.tbl_upper.5776
-                0x0000000000020220      0x1e0 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/option/ccsbcs.o
+                0x0000000000020218      0x1e0 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/fat/option/ccsbcs.o
  .rodata._ZL19LED_DISPLAY_CHARMAP
-                0x0000000000020400       0x80 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/src/io_source.o
+                0x00000000000203f8       0x80 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/src/io_source.o
  .rodata.mesh_init.str1.1
-                0x0000000000020480        0x7 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/mesh.o
- .rodata        0x0000000000020487        0x5 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/nrf24L01Plus.o
+                0x0000000000020478        0x7 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/mesh.o
+ .rodata        0x000000000002047f        0x5 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/nrf24L01Plus.o
  .rodata.wireless_init.str1.1
-                0x000000000002048c        0x5 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/wireless.o
+                0x0000000000020484        0x5 build/obj//home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/wireless.o
  .rodata._Z15high_level_initv.str1.1
-                0x0000000000020491      0x3d1 build/obj//home/bionia/SJSU-Dev/firmware/lib/L5_HighLevel/source/high_level_init.o
+                0x0000000000020489      0x3d1 build/obj//home/bionia/SJSU-Dev/firmware/lib/L5_HighLevel/source/high_level_init.o
  .rodata._ZL13hl_print_linev.str1.1
-                0x0000000000020862       0x3b build/obj//home/bionia/SJSU-Dev/firmware/lib/L5_HighLevel/source/high_level_init.o
+                0x000000000002085a       0x3b build/obj//home/bionia/SJSU-Dev/firmware/lib/L5_HighLevel/source/high_level_init.o
  .rodata._ZL16hl_mount_storageR16FileSystemObjectPKc.str1.1
-                0x000000000002089d       0x6e build/obj//home/bionia/SJSU-Dev/firmware/lib/L5_HighLevel/source/high_level_init.o
+                0x0000000000020895       0x6e build/obj//home/bionia/SJSU-Dev/firmware/lib/L5_HighLevel/source/high_level_init.o
  .rodata._exit.str1.1
-                0x000000000002090b       0x1a build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_syscalls.o
+                0x0000000000020903       0x1a build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_syscalls.o
  .rodata._kill.str1.1
-                0x0000000000020925       0x1a build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_syscalls.o
+                0x000000000002091d       0x1a build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_syscalls.o
  .rodata._ZN5Flash13get_mp3_filesEv.str1.1
-                0x000000000002093f       0x45 build/obj/L5_Application/Flash.o
+                0x0000000000020937       0x45 build/obj/L5_Application/Flash.o
  .rodata.main.str1.1
-                0x0000000000020984       0x24 build/obj/L5_Application/main.o
+                0x000000000002097c       0x24 build/obj/L5_Application/main.o
  .rodata._ZTIN10__cxxabiv117__class_type_infoE
-                0x00000000000209a8        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
-                0x00000000000209a8                typeinfo for __cxxabiv1::__class_type_info
+                0x00000000000209a0        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
+                0x00000000000209a0                typeinfo for __cxxabiv1::__class_type_info
  .rodata._ZTSN10__cxxabiv117__class_type_infoE
-                0x00000000000209b4       0x22 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
-                0x00000000000209b4                typeinfo name for __cxxabiv1::__class_type_info
- *fill*         0x00000000000209d6        0x2 ff
+                0x00000000000209ac       0x22 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
+                0x00000000000209ac                typeinfo name for __cxxabiv1::__class_type_info
+ *fill*         0x00000000000209ce        0x2 ff
  .rodata._ZTVN10__cxxabiv117__class_type_infoE
-                0x00000000000209d8       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
-                0x00000000000209d8                vtable for __cxxabiv1::__class_type_info
+                0x00000000000209d0       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(class_type_info.o)
+                0x00000000000209d0                vtable for __cxxabiv1::__class_type_info
  .rodata._ZTIN10__cxxabiv120__si_class_type_infoE
-                0x0000000000020a04        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
-                0x0000000000020a04                typeinfo for __cxxabiv1::__si_class_type_info
+                0x00000000000209fc        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
+                0x00000000000209fc                typeinfo for __cxxabiv1::__si_class_type_info
  .rodata._ZTSN10__cxxabiv120__si_class_type_infoE
-                0x0000000000020a10       0x25 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
-                0x0000000000020a10                typeinfo name for __cxxabiv1::__si_class_type_info
- *fill*         0x0000000000020a35        0x3 ff
+                0x0000000000020a08       0x25 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
+                0x0000000000020a08                typeinfo name for __cxxabiv1::__si_class_type_info
+ *fill*         0x0000000000020a2d        0x3 ff
  .rodata._ZTVN10__cxxabiv120__si_class_type_infoE
-                0x0000000000020a38       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
-                0x0000000000020a38                vtable for __cxxabiv1::__si_class_type_info
+                0x0000000000020a30       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(si_class_type_info.o)
+                0x0000000000020a30                vtable for __cxxabiv1::__si_class_type_info
  .rodata._ZTIN10__cxxabiv121__vmi_class_type_infoE
-                0x0000000000020a64        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
-                0x0000000000020a64                typeinfo for __cxxabiv1::__vmi_class_type_info
+                0x0000000000020a5c        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
+                0x0000000000020a5c                typeinfo for __cxxabiv1::__vmi_class_type_info
  .rodata._ZTSN10__cxxabiv121__vmi_class_type_infoE
-                0x0000000000020a70       0x26 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
-                0x0000000000020a70                typeinfo name for __cxxabiv1::__vmi_class_type_info
- *fill*         0x0000000000020a96        0x2 ff
+                0x0000000000020a68       0x26 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
+                0x0000000000020a68                typeinfo name for __cxxabiv1::__vmi_class_type_info
+ *fill*         0x0000000000020a8e        0x2 ff
  .rodata._ZTVN10__cxxabiv121__vmi_class_type_infoE
-                0x0000000000020a98       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
-                0x0000000000020a98                vtable for __cxxabiv1::__vmi_class_type_info
+                0x0000000000020a90       0x2c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(vmi_class_type_info.o)
+                0x0000000000020a90                vtable for __cxxabiv1::__vmi_class_type_info
  .rodata._ZTISt9type_info
-                0x0000000000020ac4        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(tinfo.o)
-                0x0000000000020ac4                typeinfo for std::type_info
+                0x0000000000020abc        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(tinfo.o)
+                0x0000000000020abc                typeinfo for std::type_info
  .rodata._ZTSSt9type_info
-                0x0000000000020acc        0xd /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(tinfo.o)
-                0x0000000000020acc                typeinfo name for std::type_info
- *fill*         0x0000000000020ad9        0x3 ff
+                0x0000000000020ac4        0xd /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libstdc++_nano.a(tinfo.o)
+                0x0000000000020ac4                typeinfo name for std::type_info
+ *fill*         0x0000000000020ad1        0x3 ff
  .rodata.__sf_fake_stderr
-                0x0000000000020adc       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
-                0x0000000000020adc                __sf_fake_stderr
+                0x0000000000020ad4       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+                0x0000000000020ad4                __sf_fake_stderr
  .rodata.__sf_fake_stdin
-                0x0000000000020afc       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
-                0x0000000000020afc                __sf_fake_stdin
+                0x0000000000020af4       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+                0x0000000000020af4                __sf_fake_stdin
  .rodata.__sf_fake_stdout
-                0x0000000000020b1c       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
-                0x0000000000020b1c                __sf_fake_stdout
+                0x0000000000020b14       0x20 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+                0x0000000000020b14                __sf_fake_stdout
  .rodata._global_impure_ptr
-                0x0000000000020b3c        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-impure.o)
-                0x0000000000020b3c                _global_impure_ptr
+                0x0000000000020b34        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-impure.o)
+                0x0000000000020b34                _global_impure_ptr
  .rodata._setlocale_r.str1.1
-                0x0000000000020b40        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-locale.o)
+                0x0000000000020b38        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-locale.o)
                                           0x9 (size before relaxing)
  .rodata.str1.1
-                0x0000000000020b48        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-locale.o)
+                0x0000000000020b40        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-locale.o)
                                           0x2 (size before relaxing)
  .rodata.DAYS_IN_MONTH
-                0x0000000000020b48       0x30 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mktime.o)
+                0x0000000000020b40       0x30 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mktime.o)
  .rodata._DAYS_BEFORE_MONTH
-                0x0000000000020b78       0x30 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mktime.o)
+                0x0000000000020b70       0x30 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mktime.o)
  .rodata.__month_lengths
-                0x0000000000020ba8       0x60 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-month_lengths.o)
-                0x0000000000020ba8                __month_lengths
+                0x0000000000020ba0       0x60 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-month_lengths.o)
+                0x0000000000020ba0                __month_lengths
  .rodata._printf_float.str1.1
-                0x0000000000020c08       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_float.o)
+                0x0000000000020c00       0x10 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_float.o)
                                          0x12 (size before relaxing)
  .rodata._printf_i.str1.1
-                0x0000000000020c18       0x22 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000000000020c10       0x22 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf_i.o)
  .rodata._scanf_float.str1.1
-                0x0000000000020c3a        0x5 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_float.o)
+                0x0000000000020c32        0x5 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_float.o)
  .rodata._strtod_l.str1.1
-                0x0000000000020c3f        0x5 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
+                0x0000000000020c37        0x5 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
                                           0xc (size before relaxing)
- *fill*         0x0000000000020c3f        0x1 ff
+ *fill*         0x0000000000020c37        0x1 ff
  .rodata.fpi.6129
-                0x0000000000020c40       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
+                0x0000000000020c38       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
  .rodata.fpinan.6165
-                0x0000000000020c54       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
+                0x0000000000020c4c       0x14 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
  .rodata.tinytens
-                0x0000000000020c68       0x28 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
+                0x0000000000020c60       0x28 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-strtod.o)
  .rodata._tzset_unlocked_r.str1.1
-                0x0000000000020c90       0x3c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzset_r.o)
+                0x0000000000020c88       0x3c /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzset_r.o)
                                          0x4e (size before relaxing)
  .rodata.str1.1
-                0x0000000000020ccc        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzvars.o)
+                0x0000000000020cc4        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-tzvars.o)
  .rodata._ctype_
-                0x0000000000020ccc      0x101 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-ctype_.o)
-                0x0000000000020ccc                _ctype_
+                0x0000000000020cc4      0x101 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-ctype_.o)
+                0x0000000000020cc4                _ctype_
  .rodata._dtoa_r.str1.1
-                0x0000000000020dcd        0xd /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-dtoa.o)
+                0x0000000000020dc5        0xd /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-dtoa.o)
                                           0xf (size before relaxing)
- *fill*         0x0000000000020dda        0x6 ff
+ *fill*         0x0000000000020dd2        0x6 ff
  .rodata.__mprec_bigtens
-                0x0000000000020de0       0x28 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x0000000000020de0                __mprec_bigtens
+                0x0000000000020dd8       0x28 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x0000000000020dd8                __mprec_bigtens
  .rodata.__mprec_tens
-                0x0000000000020e08       0xc8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
-                0x0000000000020e08                __mprec_tens
+                0x0000000000020e00       0xc8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x0000000000020e00                __mprec_tens
  .rodata.p05.6047
-                0x0000000000020ed0        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
+                0x0000000000020ec8        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mprec.o)
  .rodata._svfprintf_r.str1.1
-                0x0000000000020edc       0x11 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfprintf.o)
+                0x0000000000020ed4       0x11 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfprintf.o)
  .rodata.__ssvfscanf_r.str1.1
-                0x0000000000020eed        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfscanf.o)
+                0x0000000000020ee5        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-svfscanf.o)
  .rodata._vfprintf_r.str1.1
-                0x0000000000020eed       0x11 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf.o)
+                0x0000000000020ee5       0x11 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfprintf.o)
  .rodata.__svfscanf_r.str1.1
-                0x0000000000020eed        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf.o)
- *fill*         0x0000000000020eed        0x3 ff
- .rodata        0x0000000000020ef0        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_i.o)
+                0x0000000000020ee5        0x4 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf.o)
+ *fill*         0x0000000000020ee5        0x3 ff
+ .rodata        0x0000000000020ee8        0xc /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_i.o)
  .rodata._scanf_i.str1.1
-                0x0000000000020efc       0x12 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_i.o)
+                0x0000000000020ef4       0x12 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_i.o)
  .rodata.str1.1
-                0x0000000000020f0e        0x9 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_i.o)
-                0x0000000000020f18                . = ALIGN (0x4)
- *fill*         0x0000000000020f17        0x1 ff
-                0x0000000000020f18                . = ALIGN (0x4)
+                0x0000000000020f06        0x9 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-vfscanf_i.o)
+                0x0000000000020f10                . = ALIGN (0x4)
+ *fill*         0x0000000000020f0f        0x1 ff
+                0x0000000000020f10                . = ALIGN (0x4)
  *(.init)
-                0x0000000000020f18                . = ALIGN (0x4)
-                0x0000000000020f18                __preinit_array_start = .
+                0x0000000000020f10                . = ALIGN (0x4)
+                0x0000000000020f10                __preinit_array_start = .
  *(.preinit_array)
-                0x0000000000020f18                __preinit_array_end = .
-                0x0000000000020f18                . = ALIGN (0x4)
-                0x0000000000020f18                __init_array_start = .
+                0x0000000000020f10                __preinit_array_end = .
+                0x0000000000020f10                . = ALIGN (0x4)
+                0x0000000000020f10                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
-                0x0000000000020f18                __init_array_end = .
+                0x0000000000020f10                __init_array_end = .
  *(.fini)
-                0x0000000000020f18                . = ALIGN (0x4)
+                0x0000000000020f10                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x0000000000020f18                . = ALIGN (0x4)
+                0x0000000000020f10                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x0000000000020f18                . = ALIGN (0x4)
-                0x0000000000020f18                __symbol_table_start = .
+                0x0000000000020f10                . = ALIGN (0x4)
+                0x0000000000020f10                __symbol_table_start = .
  *(.symbol_table)
-                0x0000000000020f18                __symbol_table_end = .
+                0x0000000000020f10                __symbol_table_end = .
 
-.glue_7         0x0000000000020f18        0x0
- .glue_7        0x0000000000020f18        0x0 linker stubs
+.glue_7         0x0000000000020f10        0x0
+ .glue_7        0x0000000000020f10        0x0 linker stubs
 
-.glue_7t        0x0000000000020f18        0x0
- .glue_7t       0x0000000000020f18        0x0 linker stubs
+.glue_7t        0x0000000000020f10        0x0
+ .glue_7t       0x0000000000020f10        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000020f18        0x0
- .vfp11_veneer  0x0000000000020f18        0x0 linker stubs
+.vfp11_veneer   0x0000000000020f10        0x0
+ .vfp11_veneer  0x0000000000020f10        0x0 linker stubs
 
-.v4_bx          0x0000000000020f18        0x0
- .v4_bx         0x0000000000020f18        0x0 linker stubs
+.v4_bx          0x0000000000020f10        0x0
+ .v4_bx         0x0000000000020f10        0x0 linker stubs
 
-.iplt           0x0000000000020f18        0x0
- .iplt          0x0000000000020f18        0x0 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/core_cm3.o
+.iplt           0x0000000000020f10        0x0
+ .iplt          0x0000000000020f10        0x0 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/core_cm3.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000000000020f18                __exidx_start = .
+                0x0000000000020f10                __exidx_start = .
 
-.ARM.exidx      0x0000000000020f18        0x8
+.ARM.exidx      0x0000000000020f10        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0000000000020f18        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
-                0x0000000000020f20                __exidx_end = .
-                0x0000000000020f20                _etext = .
+ .ARM.exidx     0x0000000000020f10        0x8 /home/bionia/SJSU-Dev/tools/gcc-arm-none-eabi-6-2017-q2-update/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
+                0x0000000000020f18                __exidx_end = .
+                0x0000000000020f18                _etext = .
 
-.rel.dyn        0x0000000000020f20        0x0
- .rel.iplt      0x0000000000020f20        0x0 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/core_cm3.o
+.rel.dyn        0x0000000000020f18        0x0
+ .rel.iplt      0x0000000000020f18        0x0 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/core_cm3.o
 
 .uninit_RESERVED
  *(.bss.$RESERVED*)
 
-.data           0x000000002007c000      0x2fc load address 0x0000000000020f20
+.data           0x000000002007c000      0x2fc load address 0x0000000000020f18
  FILL mask 0xff
                 0x000000002007c000                _data = .
  *(vtable)
@@ -5210,10 +5210,10 @@ END GROUP
                 0x000000002007c2fc                . = ALIGN (0x4)
                 0x000000002007c2fc                _edata = .
 
-.igot.plt       0x000000002007c2fc        0x0 load address 0x000000000002121c
+.igot.plt       0x000000002007c2fc        0x0 load address 0x0000000000021214
  .igot.plt      0x000000002007c2fc        0x0 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/core_cm3.o
 
-.bss            0x000000002007c300      0x4bc load address 0x000000000002121c
+.bss            0x000000002007c300      0x4bc load address 0x0000000000021214
                 0x000000002007c300                _bss = .
  *(.bss*)
  .bss._ZL15g_rtc_boot_time
@@ -5454,7 +5454,7 @@ END GROUP
                 0x0000000020083fe0                PROVIDE (_vStackTop, ((ORIGIN (SRAM_AHB) + LENGTH (SRAM_AHB)) - 0x20))
 OUTPUT(build/bin/firmware.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000    0x4deb3
+.debug_info     0x0000000000000000    0x4de47
  .debug_info    0x0000000000000000      0x4aa build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/core_cm3.o
  .debug_info    0x00000000000004aa     0x1c67 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/low_level_init.o
  .debug_info    0x0000000000002111      0x583 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/lpc_peripherals.o
@@ -5510,10 +5510,10 @@ OUTPUT(build/bin/firmware.elf elf32-littlearm)
  .debug_info    0x00000000000454cb     0x124c build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/memory.o
  .debug_info    0x0000000000046717     0x1d71 build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_syscalls.o
  .debug_info    0x0000000000048488      0xc4d build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_time.o
- .debug_info    0x00000000000490d5     0x3693 build/obj/L5_Application/Flash.o
- .debug_info    0x000000000004c768     0x174b build/obj/L5_Application/main.o
+ .debug_info    0x00000000000490d5     0x3643 build/obj/L5_Application/Flash.o
+ .debug_info    0x000000000004c718     0x172f build/obj/L5_Application/main.o
 
-.debug_abbrev   0x0000000000000000     0xc5c4
+.debug_abbrev   0x0000000000000000     0xc5a6
  .debug_abbrev  0x0000000000000000       0xbb build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/core_cm3.o
  .debug_abbrev  0x00000000000000bb      0x3b8 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/low_level_init.o
  .debug_abbrev  0x0000000000000473      0x17b build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/lpc_peripherals.o
@@ -5569,10 +5569,10 @@ OUTPUT(build/bin/firmware.elf elf32-littlearm)
  .debug_abbrev  0x000000000000afe6      0x3cc build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/memory.o
  .debug_abbrev  0x000000000000b3b2      0x4ff build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_syscalls.o
  .debug_abbrev  0x000000000000b8b1      0x2bb build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_time.o
- .debug_abbrev  0x000000000000bb6c      0x616 build/obj/L5_Application/Flash.o
- .debug_abbrev  0x000000000000c182      0x442 build/obj/L5_Application/main.o
+ .debug_abbrev  0x000000000000bb6c      0x607 build/obj/L5_Application/Flash.o
+ .debug_abbrev  0x000000000000c173      0x433 build/obj/L5_Application/main.o
 
-.debug_loc      0x0000000000000000    0x17acb
+.debug_loc      0x0000000000000000    0x17b32
  .debug_loc     0x0000000000000000      0x2ba build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/core_cm3.o
  .debug_loc     0x00000000000002ba      0x6b2 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/low_level_init.o
  .debug_loc     0x000000000000096c       0x97 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/lpc_peripherals.o
@@ -5624,8 +5624,8 @@ OUTPUT(build/bin/firmware.elf elf32-littlearm)
  .debug_loc     0x000000000001675c      0x101 build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/memory.o
  .debug_loc     0x000000000001685d      0xbf7 build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_syscalls.o
  .debug_loc     0x0000000000017454       0xe0 build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_time.o
- .debug_loc     0x0000000000017534      0x4f4 build/obj/L5_Application/Flash.o
- .debug_loc     0x0000000000017a28       0xa3 build/obj/L5_Application/main.o
+ .debug_loc     0x0000000000017534      0x55b build/obj/L5_Application/Flash.o
+ .debug_loc     0x0000000000017a8f       0xa3 build/obj/L5_Application/main.o
 
 .debug_aranges  0x0000000000000000     0x1ca8
  .debug_aranges
@@ -5802,7 +5802,7 @@ OUTPUT(build/bin/firmware.elf elf32-littlearm)
  .debug_ranges  0x0000000000002d18       0xe0 build/obj/L5_Application/Flash.o
  .debug_ranges  0x0000000000002df8       0x18 build/obj/L5_Application/main.o
 
-.debug_line     0x0000000000000000    0x12303
+.debug_line     0x0000000000000000    0x1230e
  .debug_line    0x0000000000000000      0x2a4 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/core_cm3.o
  .debug_line    0x00000000000002a4      0x3ff build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/low_level_init.o
  .debug_line    0x00000000000006a3      0x267 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/lpc_peripherals.o
@@ -5858,8 +5858,8 @@ OUTPUT(build/bin/firmware.elf elf32-littlearm)
  .debug_line    0x0000000000010962      0x42d build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/memory.o
  .debug_line    0x0000000000010d8f      0x73c build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_syscalls.o
  .debug_line    0x00000000000114cb      0x2be build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_time.o
- .debug_line    0x0000000000011789      0x6f1 build/obj/L5_Application/Flash.o
- .debug_line    0x0000000000011e7a      0x489 build/obj/L5_Application/main.o
+ .debug_line    0x0000000000011789      0x6fc build/obj/L5_Application/Flash.o
+ .debug_line    0x0000000000011e85      0x489 build/obj/L5_Application/main.o
 
 .debug_str      0x0000000000000000     0xcda4
  .debug_str     0x0000000000000000      0x2a4 build/obj//home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/source/core_cm3.o
@@ -5972,9 +5972,9 @@ OUTPUT(build/bin/firmware.elf elf32-littlearm)
                                         0xcfa (size before relaxing)
  .debug_str     0x000000000000c4bd       0xc4 build/obj//home/bionia/SJSU-Dev/firmware/lib/newlib/newlib_time.o
                                         0x709 (size before relaxing)
- .debug_str     0x000000000000c581      0x7cc build/obj/L5_Application/Flash.o
-                                       0x23fc (size before relaxing)
- .debug_str     0x000000000000cd4d       0x57 build/obj/L5_Application/main.o
+ .debug_str     0x000000000000c581      0x7af build/obj/L5_Application/Flash.o
+                                       0x23d7 (size before relaxing)
+ .debug_str     0x000000000000cd30       0x74 build/obj/L5_Application/main.o
                                         0xf74 (size before relaxing)
 
 .comment        0x0000000000000000       0x7f

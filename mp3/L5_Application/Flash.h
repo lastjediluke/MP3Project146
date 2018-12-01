@@ -15,8 +15,8 @@ class Flash {
     private:
         // for dislay output
         char mp3Files[10][20];
-        char songTitles[10][20];
-        char artists[10][20];
+        // char songTitles[10][20];
+        // char artists[10][20];
         // for opening and reading files
         VECTOR<FileName> mp3Files1;
         uint8_t numFiles;
