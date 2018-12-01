@@ -17,6 +17,10 @@ Flash::Flash() {
     numFiles = 0;
 }
 
+uint8_t Flash::get_number_of_songs(){
+    return numFiles;
+}
+
 void Flash::get_mp3_files() {
     DIR Dir;
     FILINFO Finfo;
@@ -53,11 +57,11 @@ void Flash::get_mp3_files() {
             // check if currently reading mp3 file
             if (name.contains("MP3")) {
                 ++numFiles;
-                sprintf(mp3Meta[iter], Finfo.lfname);
+                sprintf(mp3Files[iter], Finfo.lfname);
 
-                // printf("Name: ");
-                // printf(mp3Meta[iter]);
-                // printf("\n");
+                ("Name: ");
+                printf(mp3Files[iter]);
+                printf("\n");
 
                 ++iter;
             }
@@ -67,27 +71,16 @@ void Flash::get_mp3_files() {
     return;
 }
 
-void Flash::get_mp3_metadata() {
+void Flash::get_mp3_metadata(char *songs, char *arts, uint8_t rows, uint8_t cols) {
     for (uint8_t k = 0; k < numFiles; k++) {
         char fileName[75];
         char buffTmp[75];
-        int i = 0;
-        char songTitle[40];
-        char artist[40];
-
-        for (i = 0; i < 40; i ++) {
-            songTitle[i] = ' ';
-            artist[i] = ' ';
-        }
+        uint16_t i = 0;
 
         str file = "1:";
-        str tmp1(mp3Meta[k]);
+        str tmp1(mp3Files[k]);
         file.append(tmp1);
         strcpy(fileName, file.c_str());
-
-        printf("File name: \n");
-        printf(fileName);
-        printf("\n");
 
         Storage::read(fileName, &buffTmp, strlen(buffTmp), 0);
 
@@ -110,7 +103,7 @@ void Flash::get_mp3_metadata() {
                 // get song title
                 uint16_t j = 0;
                 while (1) {
-                    songTitle[j] = buffTmp[i];
+                    *((songs + k * cols) + j) = buffTmp[i];
                     i++;
                     j++;
                     if ((buffTmp[i] == 'T') && (buffTmp[i + 1] == 'P') && (buffTmp[i + 2] == 'E')) {
@@ -128,25 +121,13 @@ void Flash::get_mp3_metadata() {
                 // get artist
                 j = 0;
                 while (1) {
-                    artist[j] = buffTmp[i];
+                    *((arts + k * cols) + j) = buffTmp[i];
                     i++;
                     j++;
                     if ((buffTmp[i] == 'P') && (buffTmp[i + 1] == 'O')) {
                         break;
                     }
                 }
-
-                u0_dbg_printf("Artist Char: ");
-                for (i = 0; i < 40; i++) {
-                    u0_dbg_printf("%c", artist[i]);
-                }
-                u0_dbg_printf("\n");
-
-                u0_dbg_printf("Title Char: ");
-                for (i = 0; i < 40; i++) {
-                    u0_dbg_printf("%c", songTitle[i]);
-                }
-                u0_dbg_printf("\n\n");
 
                 break;
             }
@@ -156,6 +137,11 @@ void Flash::get_mp3_metadata() {
     return;
 }
 
+void Flash::mp3_init(char *songs, char *artists, uint8_t rows, uint8_t cols) {
+    get_mp3_files();
+    get_mp3_metadata(songs, artists, rows, cols);
+}
+
 bool Flash::send_mp3_file_2_decoder(uint8_t songIndex, QueueHandle_t *queue) {
     if (songIndex < 0 || songIndex > (numFiles - 1)){
         return false;
@@ -163,7 +149,7 @@ bool Flash::send_mp3_file_2_decoder(uint8_t songIndex, QueueHandle_t *queue) {
     else {
         FIL src_file;
         // Open existing file
-        FRESULT status = f_open(&src_file, mp3Files[songIndex - 1].buffer, FA_OPEN_EXISTING | FA_READ);
+        FRESULT status = f_open(&src_file, mp3Files1[songIndex - 1].buffer, FA_OPEN_EXISTING | FA_READ);
         if (status == FR_OK) {
             // returns number of DWORDs, so 1 DWORD = 4 bytes
             int file_size = f_size(&src_file);
@@ -186,13 +172,5 @@ bool Flash::send_mp3_file_2_decoder(uint8_t songIndex, QueueHandle_t *queue) {
         else {
             u0_dbg_printf("Error reading file");
         }
-    }
-}
-
-void Flash::print_meta_data() {
-    for (int i = 0; i < numFiles; i++) {
-        printf("File name: ");
-        printf(mp3Meta[i]);
-        printf("\n");
     }
 }

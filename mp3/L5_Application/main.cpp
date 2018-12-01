@@ -8,18 +8,28 @@
 #include "Flash.h"
 #include "storage.hpp"
 
-Flash obj;
-
 void vprintMp3Files(void * pvParam) {
-	obj.get_mp3_files();
-	obj.get_mp3_metadata();
-
 	while (1) {
 		vTaskDelay(50);
 	}
 }
 
 int main(int argc, char const *argv[]){
+	char songTitles[10][20];
+	char artists[10][20];
+	Flash obj;
+	obj.mp3_init((char*)songTitles, (char*)artists, (uint8_t)10, (uint8_t)20);
+
+	uint8_t numSongs = obj.get_number_of_songs();
+	for (uint8_t i = 0; i < numSongs; i++) {
+		printf("Artist: ");
+		printf(artists[i]);
+		printf("\n");
+		printf("Song Title: ");
+		printf(songTitles[i]);
+		printf("\n");
+	}
+
 	xTaskCreate(vprintMp3Files, "printMp3Files", 4096, (void*) 0, 1, NULL);
 
 	vTaskStartScheduler();
