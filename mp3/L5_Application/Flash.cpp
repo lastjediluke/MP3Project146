@@ -149,8 +149,15 @@ bool Flash::send_mp3_file_2_decoder(uint8_t songIndex, QueueHandle_t *queue) {
     }
     else {
         FIL src_file;
+        char fileName[75];
+
+        str file = "1:";
+        str tmp1(mp3Files[k]);
+        file.append(tmp1);
+        strcpy(fileName, file.c_str());
+
         // Open existing file
-        FRESULT status = f_open(&src_file, mp3Files1[songIndex - 1].buffer, FA_OPEN_EXISTING | FA_READ);
+        FRESULT status = f_open(&src_file, fileName, FA_OPEN_EXISTING | FA_READ);
         if (status == FR_OK) {
             // returns number of DWORDs, so 1 DWORD = 4 bytes
             int file_size = f_size(&src_file);
@@ -160,7 +167,7 @@ bool Flash::send_mp3_file_2_decoder(uint8_t songIndex, QueueHandle_t *queue) {
             // f_lseek: move file pointer of  afile
 
             // read and send entire file to decoder, may be faster than by going byte by byte
-            char buffer[512] = {0};     // extra char for null terminator
+            char *buffer = new char[file_size];     // extra char for null terminator
             unsigned int bytesRead = 0;
             // start sending bytes to decoder
             while (FR_OK == f_read(&src_file, buffer, sizeof(buffer), &bytesRead) > 0) {
