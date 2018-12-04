@@ -174,6 +174,7 @@ bool Flash::send_mp3_file_2_decoder(uint8_t songIndex, QueueHandle_t *queue) {
                 // BE SURE TO CREATE A QUEUE INSIDE THE MAIN
                 xQueueSend(queue, &src_file, portMAX_DELAY);
             }
+            delete []buffer;
             f_close(&src_file);
             return true;
         }
