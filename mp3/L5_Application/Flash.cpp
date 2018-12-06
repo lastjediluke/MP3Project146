@@ -152,7 +152,7 @@ bool Flash::send_mp3_file_2_decoder(uint8_t songIndex, QueueHandle_t *queue) {
         char fileName[75];
 
         str file = "1:";
-        str tmp1(mp3Files[k]);
+        str tmp1(mp3Files[0]);
         file.append(tmp1);
         strcpy(fileName, file.c_str());
 
