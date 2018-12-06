@@ -193,19 +193,20 @@ void VS1011Drv::SineTestStop()
 //     }
 // }
 
-void volUp()
+// actual volume ranges from 0 to 254dB. If volume reaches 255dB, it triggers powerdown mode
+void volUp(uint16_t incr = 0x3232)
 {
     uint16_t result = SendSCIReadCommand(0xB);
-    // set increments to 25dB
-    result -= 0x3232;
+    incr = ((incr / 0.5) << 8) + (incr / 0.5);
+    result -= incr;
     SendSCIWriteCommand(0xB, result);
 }
 
-void volDown() 
+void volDown(uint16_t decr = 0x3232) 
 {
     uint16_t result = SendSCIReadCommand(0xB);
-    // set increments to 25dB
-    result += 0x3232;
+    incr = ((incr / 0.5) << 8) + (incr / 0.5);
+    result += incr;
     SendSCIWriteCommand(0xB, result);
 }
 

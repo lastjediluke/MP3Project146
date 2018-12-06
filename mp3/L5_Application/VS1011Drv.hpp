@@ -42,15 +42,15 @@ class VS1011Drv
         //it will take the first item off the queue and send it to the decoder
         void SendToDecoder();
 
-        void volUp();
+        void volUp(uint16_t incr = 0x3232);     // default incremenet value to 25dB
 
-        void volDown();
+        void volDown(uint16_t decr = 0x3232);
 
         //This is used for initial setup, sending config commands to the flash
         void SendSCIWriteCommand(uint8_t regAddr, uint16_t writeData);
 
         uint16_t SendSCIReadCommand(uint8_t regAddr);
-        
+
         //sets the member variable queue handler to the one created by the 
         //task
         void setQueueHandler(QueueHandle_t &flashQueue);
