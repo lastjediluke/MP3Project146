@@ -17,6 +17,16 @@ Flash::Flash() {
     numFiles = 0;
 }
 
+Flash * Flash::m_instance = NULL;
+
+Flash * Flash::instance()
+{
+    if(!m_instance)
+    {
+        m_instance = new Flash();
+    }
+    return m_instance;
+}
 uint8_t Flash::get_number_of_songs(){
     return numFiles;
 }
@@ -143,37 +153,68 @@ void Flash::mp3_init(char *songs, char *artists, uint8_t rows, uint8_t cols) {
     printf("end of flash init \n");
 }
 
-bool Flash::send_mp3_file_2_decoder(uint8_t songIndex, QueueHandle_t &queue) {
+void Flash::send_mp3_file_2_decoder() {
     // if (songIndex < 0 || songIndex > (numFiles - 1)){
     //     return false;
     // }
-    if(1)
+    while(1)
     {
-        FIL src_file;
-        // Open existing file
-        FRESULT status = f_open(&src_file,"1:partyTonight.mp3" , FA_OPEN_EXISTING | FA_READ);
-        if (status == FR_OK) {
-            // returns number of DWORDs, so 1 DWORD = 4 bytes
-            int file_size = f_size(&src_file);
-            printf("size of mp3: %d \n",file_size);
-            // read and send file byte by byte to decoder, may be slower than by taking the whole file
-            // f_forward: forward data to the stream
-            // f_lseek: move file pointer of  afile
-
-            // read and send entire file to decoder, may be faster than by going byte by byte
-            char buffer[512] = {0};     // extra char for null terminator
-            unsigned int bytesRead = 0;
-            // start sending bytes to decoder
-            while (FR_OK == f_read(&src_file, buffer, sizeof(buffer), &bytesRead)) {
-                // BE SURE TO CREATE A QUEUE INSIDE THE MAIN
-                xQueueSend(queue, buffer, portMAX_DELAY);
-            }
-        }
-        else 
+        char songName[20];
+        if(xQueueReceive(*songQueue, songName, portMAX_DELAY))
         {
-            u0_dbg_printf("Error reading file");
+            FIL src_file;
+            // Open existing file
+            str fileName = "1:";
+            fileName.append(songName);
+            strcpy(songName, fileName.c_str());
+            printf("songName:%s w\n",songName);
+            FRESULT status = f_open(&src_file, songName , FA_OPEN_EXISTING | FA_READ);
+            if (status == FR_OK) 
+            {
+                // returns number of DWORDs, so 1 DWORD = 4 bytes
+                int file_size = f_size(&src_file);
+                printf("size of mp3: %d \n",file_size);
+                // read and send file byte by byte to decoder, may be slower than by taking the whole file
+                // f_forward: forward data to the stream
+                // f_lseek: move file pointer of  afile
+
+                // read and send entire file to decoder, may be faster than by going byte by byte
+                char buffer[512] = {0};     // extra char for null terminator
+                unsigned int bytesRead = 0;
+                unsigned int totalBytesRead = 0;
+                // start sending bytes to decoder
+                while (FR_OK == f_read(&src_file, buffer, sizeof(buffer), &bytesRead) && itsUIcontrol->getCurrentState() != MP3State::STOPPED) 
+                {
+                    if(itsUIcontrol->getCurrentState() == MP3State::PAUSED)
+                    {
+                        xTaskSuspend(NULL);
+                    }
+                    xQueueSend(*decoderQueue, buffer, portMAX_DELAY);
+                    totalBytesRead += bytesRead;
+                    if(totalBytesRead >= file_size)
+                    {
+                        break;
+                    }
+                }
+
+                VS1011Drv::instance()->stopSong();
+                if(itsUIcontrol->getCurrentState() == MP3State::STOPPED)    //We want to play another song. Clear queue
+                {
+                    xQueueReset(*decoderQueue);     //clear the buffer of the previously playing song
+                    f_close(&src_file);
+                }
+            }
+            else 
+            {
+                u0_dbg_printf("Error reading file");
+            }
+            f_close(&src_file);
         }
-        f_close(&src_file);
-        return true;
     }
+}
+
+void Flash::setQueueHandlers(QueueHandle_t &dQueue, QueueHandle_t &sQueue)
+{
+    decoderQueue = &dQueue;
+    songQueue = &sQueue;
 }

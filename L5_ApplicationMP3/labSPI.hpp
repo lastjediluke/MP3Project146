@@ -72,22 +72,35 @@ class LabSPI
 
     bool initializeDecoderSPI()
     {
-        LPC_SC->PCONP |= (1 << 21);     //enable power for ssp0
-        LPC_SC->PCLKSEL1 &= ~(3 << 10); //select peripheral clock for ssp0
-        LPC_SC->PCLKSEL1 |= (2 << 10);  //pcclk = cclck/2
+        // LPC_SC->PCONP |= (1 << 21);     //enable power for ssp0
+        // LPC_SC->PCLKSEL1 &= ~(3 << 10); //select peripheral clock for ssp0
+        // LPC_SC->PCLKSEL1 |= (2 << 10);  //pcclk = cclck/2
 
-        LPC_PINCON->PINSEL1 &= ~(3 << 2);
-        LPC_PINCON->PINSEL0 |= (2 << 30);        //sclk0 P0.15
-        LPC_PINCON->PINSEL1 |= (2 << 2);        //MISO0 P0.17
-        LPC_PINCON->PINSEL1 |= (2 << 4);        //MOSI0 P0.18
+        // LPC_PINCON->PINSEL1 &= ~(3 << 2);
+        // LPC_PINCON->PINSEL0 |= (2 << 30);        //sclk0 P0.15
+        // LPC_PINCON->PINSEL1 |= (2 << 2);        //MISO0 P0.17
+        // LPC_PINCON->PINSEL1 |= (2 << 4);        //MOSI0 P0.18
 
-        LPC_SSP0->CR0 = 7;	// how many bits are being transferred
+        // LPC_SSP0->CR0 = 7;	// how many bits are being transferred
         
-        //SSP_PCLK is divided by this even number between 2-254
-        //SPI CLOCK NEEDS TO BE 2Mhz to satisfy the decoders specifications
-        LPC_SSP0->CPSR = 24;         //clock division
-        LPC_SSP0->CR1 |= (1<<1);	//enable SSP 
+        // //SSP_PCLK is divided by this even number between 2-254
+        // //SPI CLOCK NEEDS TO BE 2Mhz to satisfy the decoders specifications
+        // LPC_SSP0->CPSR = 24;         //clock division
+        // LPC_SSP0->CR1 |= (1<<1);	//enable SSP 
         
+        LPC_SC->PCONP |= (1 << 10);     //enable power for ssp1
+        LPC_SC->PCLKSEL0 &= ~(3 << 20);      //select peripheral clock for ssp1
+        LPC_SC->PCLKSEL0 |= (2 << 20);  //pcclk = cclck/2
+
+        LPC_PINCON->PINSEL0 &= ~((3 << 14) | (3 << 16) | (3<<18));        //clear the bits
+        LPC_PINCON->PINSEL0 |= (2 << 14);        //sclk1 P0.7
+        LPC_PINCON->PINSEL0 |= (2 << 16);        //MISO1 P0.8
+        LPC_PINCON->PINSEL0 |= (2 << 18);        //MOSI1 P0.9
+
+        LPC_SSP1->CR0 = 7;
+
+        LPC_SSP1->CPSR = 24;
+        LPC_SSP1->CR1 |= (1<<1);
 
         return true;
     }
@@ -107,10 +120,10 @@ class LabSPI
 
     uint8_t transferMP3(uint8_t send)
     {
-        LPC_SSP0->DR = send;
-        while(LPC_SSP0->SR & (1 << 4));     //SR = status register
+        LPC_SSP1->DR = send;
+        while(LPC_SSP1->SR & (1 << 4));     //SR = status register
         //while the ssp is busy
-        return LPC_SSP0->DR;        //return the byte
+        return LPC_SSP1->DR;        //return the byte
     }
     LabSPI()
     {

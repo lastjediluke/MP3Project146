@@ -1,5 +1,18 @@
 #include "VS1011Drv.hpp"
 
+/* TO DO
+    -End a song correctly
+    -Play multiple songs
+    -Stop and play next song
+*/
+uint8_t const SCI_MODE_REG = 0x0;
+uint8_t const SCI_CLOCKF_REG = 0x3;
+uint8_t const SCI_VOL_REG = 0xB;
+uint8_t const SCI_AUDATA_REG = 0x5;
+uint16_t const SCI_WRAM = 0x6;
+uint16_t const SCI_WRAMADDR = 0x7;
+uint16_t const EDNFB_ADDR = 0x1e06;
+
 VS1011Drv::VS1011Drv()
 {
 
@@ -11,7 +24,6 @@ VS1011Drv * VS1011Drv::instance()
     if(!m_instance)
     {
         m_instance = new VS1011Drv();
-        m_instance->initialize();
     }
     return m_instance;
 }
@@ -40,6 +52,44 @@ void VS1011Drv::initialize()
     RST->setAsOutput();
     
     //HW RESET
+    HWreset();
+
+    //SW RESET
+    delay_ms(100);
+    SendSCIWriteCommand(0x00, 0x0800 | 0x0004);
+    delay_ms(100);
+    while(!DREQ->getLevel());
+
+    SendSCIWriteCommand(SCI_MODE_REG, 0x0800); //SendSCIWriteCommand(SCI_MODE_REG, 0x0800 | 0x04); //send reset
+    SendSCIWriteCommand(SCI_AUDATA_REG, 0xAC45);    //44100Hz stereo
+    SendSCIWriteCommand(SCI_CLOCKF_REG, 0x2000);   //CLKI internal clock is now 24.3 MHz
+    SendSCIWriteCommand(SCI_VOL_REG, 0x0404);  //set to volume slightly under max, left and right channel put at -2.0 db, so send (4*256) + 4 = 1028 (data sheet black magic calculations) 
+
+    uint16_t result = SendSCIReadCommand(0x00);
+    printf("SCI_MODE REG: %x \n",result);
+
+    result = SendSCIReadCommand(0xB);
+    printf("VOL REG: %x \n",result);
+
+    result = SendSCIReadCommand(0x5);
+    printf("AUData: %x \n",result);
+
+    //send atleast two 0 bytes to the decoder
+    deselectxDCS();
+    selectDCS();
+    m_SPIDrv->transferMP3(0x00);
+    m_SPIDrv->transferMP3(0x00);
+    deselectDCS();
+    
+    // SineTestStart();
+    // delay_ms(2000);
+    // SineTestStop();
+
+    //xTaskCreate(monitorVolume, "vMonitorVolume", 1024, NULL, 1, NULL);
+}
+
+void VS1011Drv::HWreset()
+{
     RST->setLow();
     delay_ms(1000);
     RST->setHigh();
@@ -49,48 +99,20 @@ void VS1011Drv::initialize()
     xDCS->setHigh(); 
     while(!DREQ->getLevel());
 
-    //SW RESET
-    SendSCIWriteCommand(0x00, 0x0800 | 0x0004);
-    while(!DREQ->getLevel());
-    /*
-    TODO
-        Fill in the correct port and pin numbers for DCS, xDCS, and DREG
-        SETUP the initialization commands to be sent to the decoder.
-    */
-    uint8_t const SCI_MODE_REG = 0x0;
-    uint8_t const SCI_CLOCKF_REG = 0x3;
-    uint8_t const SCI_VOL_REG = 0xB;
-    uint8_t const SCI_AUDATA_REG = 0x5;
-    SendSCIWriteCommand(SCI_MODE_REG, 0x0800); //SendSCIWriteCommand(SCI_MODE_REG, 0x0800 | 0x04); //send reset
-    SendSCIWriteCommand(SCI_AUDATA_REG, 0xAC45);    //44100Hz stereo
-    SendSCIWriteCommand(SCI_CLOCKF_REG, 0x2000);   //CLKI internal clock is now 24.3 MHz
-    SendSCIWriteCommand(SCI_VOL_REG, 0x0404);  //set to volume slightly under max, left and right channel put at -2.0 db, so send (4*256) + 4 = 1028 (data sheet black magic calculations) 
+    //place decoder into MP3 mode on hw reset
+    SendSCIWriteCommand(SCI_WRAMADDR, 0xC017);
+    SendSCIWriteCommand(SCI_WRAM, 3);
 
-    SineTestStart();
-    delay_ms(2000);
-    SineTestStop();
-    
-    deselectxDCS();
-    selectDCS();
-    m_SPIDrv->transferMP3(0x00);
-    m_SPIDrv->transferMP3(0x00);
-    deselectDCS();
-    //xTaskCreate(monitorVolume, "vMonitorVolume", 1024, NULL, 1, NULL);
+    SendSCIWriteCommand(SCI_WRAMADDR, 0xC019);
+    SendSCIWriteCommand(SCI_WRAM, 0);
 }
 
 //this is driven by a command handler. you can use the terminal to execute the start and stop of the test
 void VS1011Drv::SineTestStart()
 {
     uint8_t const test = 0b00011111;    //test freq of 5000Hz
-    uint8_t const SCI_MODE_REG = 0x0;
-    uint8_t const SCI_CLOCKF_REG = 0x3;
-    uint8_t const SCI_VOL_REG = 0xB;
-    uint8_t const SCI_AUDATA_REG = 0x5;
-    //HW reset
-    RST->setLow();
-    delay_ms(1000);
-    RST->setHigh();
-    while(!DREQ->getLevel());
+
+    HWreset();
 
     //Send test commands
     SendSCIWriteCommand(SCI_AUDATA_REG, 0xAC45);    //44100Hz stereo
@@ -142,19 +164,13 @@ void VS1011Drv::SendToDecoder()
             buf_ptr = m_transBuf;
             // printf("sendTask: %x \n",buf_ptr);
             printf("value: %x \n", *buf_ptr);
-            /*
-                we grab 512 bytes off of the queue
-                we can only safely send 32 bytes at a time though
-                When DREQ is high, it means we can send at least 32 bytes to the decoder (FIFO has room for 32 bytes)
-                We need to ensure we send off all 512 bytes of the current buffer before we grab the next
 
-                TODO:
-                    -make sure we stop sending data when the user requests a "pause"
-                    -if we switch songs, we need to empty the buffer and queue
-                    -NEW_SONG AND PAUSED ARE PLACEHOLDERS FOR STATES DETERMINED BY USER INPUT ELSEWHERE 
-            */
-            while(!(buf_ptr > &m_transBuf[511]))    //while the buf_ptr has not exceeded the end of the chunk
-            {
+            while(!(buf_ptr > &m_transBuf[511]) && itsUIcontrol->getCurrentState() != MP3State::STOPPED)    //while the buf_ptr has not exceeded the end of the chunk
+            {   
+                if(itsUIcontrol->getCurrentState() == MP3State::PAUSED)
+                {
+                    xTaskSuspend(NULL);
+                }
                 if(DREQ->getLevel()) //can we send 32 bytes?
                 {
                     deselectxDCS();
@@ -168,8 +184,48 @@ void VS1011Drv::SendToDecoder()
                     deselectDCS();    
                 }
             }
+            if(itsUIcontrol->getCurrentState() == MP3State::STOPPED)
+            {
+                xTaskSuspend(NULL);
+            }
         }
     }
+}
+
+bool VS1011Drv::stopSong()
+{
+        //   -Read endFillbyte
+        // -send 2052 bytes of endFillByte
+        // -set SCI_Mode bit CANCEL
+        // -Send 32 bytes of endFillByte
+        // -If sm_cancel is still not cleared do a soft reset.
+        uint16_t endFillByte;
+        SendSCIWriteCommand(SCI_WRAMADDR, EDNFB_ADDR);
+        endFillByte = SendSCIReadCommand(SCI_WRAM);
+        bool cancelCleared = false;
+    
+        deselectxDCS();
+        selectDCS();
+        for(int i =0; i<2052; i++)
+        {
+            //send 2052 bytes of end fill bytes
+            m_SPIDrv->transferMP3(endFillByte);
+        }
+        deselectDCS();
+
+        SendSCIWriteCommand(0x00, 0x0800 | 0x0008); //set cancel bit
+        while(!cancelCleared)
+        {
+            cancelCleared = !(SendSCIReadCommand(0x0) & (1<<3));
+            selectDCS();
+            for(uint8_t i = 0; i<32; i++)
+            {
+                m_SPIDrv->transferMP3(endFillByte);
+            }
+            deselectDCS();
+        }
+        printf("SONG STOPPED \n");
+        return true;
 }
 
 //Task that continuously monitors the state of the potentiometer using the ADC.

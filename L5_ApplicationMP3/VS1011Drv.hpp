@@ -44,14 +44,17 @@ class VS1011Drv
 
     void monitorVolume();
 
+    bool stopSong();
+
+    void HWreset();
     //This is used for initial setup, sending config commands to the flash
     void SendSCIWriteCommand(uint8_t regAddr, uint16_t writeData);
 
     uint16_t SendSCIReadCommand(uint8_t regAddr);
 
     void setVolume(uint16_t db);
-    //sets the member variable queue handler to the one created by the 
-    //task
+
+    //sets the member variable queue handler to the one created by main
     void setQueueHandler(QueueHandle_t &flashQueue);
 
     void selectDCS();
