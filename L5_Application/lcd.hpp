@@ -70,29 +70,13 @@ void spiLCDInit()
     instance.transferMP3(0x10);	// baud rate
     lcd_cs.setHigh();
 
-    // lcd_cs.setLow();
-    // instance.transferMP3(0x7c); // setting mode
-    // instance.transferMP3(0x9d); // background brightness
-    // lcd_cs.setHigh();
-
-    lcd_cs.setLow();
-    instance.transferMP3(0x7c); // setting mode
-    instance.transferMP3(128); // contrast brightness
-    lcd_cs.setHigh();
+    
 
     delay_ms(2000);
 
-    lcd_cs.setLow();
-    instance.transferMP3(0x7c); // setting mode
-    instance.transferMP3(150); // contrast brightness
-    lcd_cs.setHigh();
+    
 
-    lcd_cs.setLow();
-    instance.transferMP3(0x7c);	// setting mode
-    instance.transferMP3(0x2d);
-    // instance.transferMP3(0x7c);
-    // instance.transferMP3(0x05);		// trying to set to 4 lines
-    lcd_cs.setHigh();
+    
 
     /*
     lcd_cs.setLow();

@@ -17,18 +17,21 @@
 #include "labSPI.hpp"
 #include "artist.hpp"
 #include "song.hpp"
+#include "functions.hpp"
 
 TaskHandle_t xHandle;
 
-char **songPlayingPtr = NULL;
+// songpntr was here
+bool songIsPlaying = 0;
+
+int seconds = 0;
+int minute = 0;
+int bytes2write = 0;
+char data[20];
 
 
 
-// ### Now Playing ###
-
-uint8_t nowPlayingSize = 2;		// this will be the size of how ever much info we decide to display
-// in this case, we are only displaying album and artist
-uint8_t nowPlayingCounter = 0;
+// now playing was here
 
 // ### Menu ###
 
@@ -53,6 +56,12 @@ typedef enum {
 myStateType currentState = mainMenuScreen;
 myStateType previousState = mainMenuScreen;
 myStateType tempState = mainMenuScreen;
+
+void resetTimer()
+{
+	seconds = 0;
+	minute = 0;
+}
 
 // ### next state logic ###
 
@@ -79,7 +88,7 @@ void prepareForNextState()
 
 			if (menuCounter == 4)
 			{
-
+				previousState = mainMenuScreen;
 				currentState = nowPlayingScreen;
 				uart0_puts("cs is now playing screen\n");
 				break;
@@ -96,18 +105,13 @@ void prepareForNextState()
 		case songsScreen:		// when i press select, songCounter is one ahead of where I want it
 		{
 			songPlayingPtr = songs;
-			if ( songsCounter == -1)
-			{
-				nowPlayingCounter = songsSize - 1;		// end of songs array
-			}
-
-			else
-			{
-				nowPlayingCounter = songsCounter - 1;
-			}
+			nowPlaying = songsCounter - 1;
+			songIsPlaying = 1;
+			resetTimer();
+			printf("now playing counter is at %d\n", nowPlaying );
 			
 			// getArtistFromSong();
-			vTaskResume(xHandle);
+			// vTaskResume(xHandle);
 			currentState = nowPlayingScreen;
 			break;
 		}
@@ -145,11 +149,14 @@ void displayCurrentState()
 
 		case songsScreen:
 		{
+			previousState = mainMenuScreen;
 			uart0_puts ("displaying song screen\n");
 			if (songsCounter == songsSize)
         	{
         		songsCounter = 0;
         	}
+
+        	printf("song counter is at %d\n", songsCounter);
             clearDisplay();
             spiSendString("Songs: ");
             newLine();
@@ -186,8 +193,14 @@ void displayCurrentState()
             spiSendString("Now Playing: ");
             newLine();
             if (songPlayingPtr == NULL) break;
-            // if (nowPlayingCounter == 0) spiSendString(artistStructPtr->nameOfArtist);
-            else spiSendString(songs[nowPlayingCounter-1]);
+            if (nowPlayingCounter == 0) spiSendString(songs[nowPlaying]);
+            if (nowPlayingCounter == 1)
+            {
+            	getArtistFromSong();
+            	spiSendString(artistStructPtr->nameOfArtist);
+            }
+            // else spiSendString(songs[nowPlaying]);
+            
             
             nowPlayingCounter++;
 			break;
@@ -202,13 +215,13 @@ void getWhereToGoBackTo()
 	{
 		case mainMenuScreen:
 		{	
-			previousState = currentState;
+			previousState = mainMenuScreen;
 			currentState = currentState;
 			break;
 		}
 		case songsScreen:
 		{
-			previousState = currentState;
+			previousState = songsScreen;
 			currentState = mainMenuScreen;
 			break;
 		}

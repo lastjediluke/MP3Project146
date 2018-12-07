@@ -46,6 +46,8 @@ artistStruct myArtists[4] = {	// I set it up to be 4, it should be larger or we 
 	{"", {"", "", ""}, -1}									// empty struct to indicate end of the array
 };
 
+artistStruct fromMP3ArtistStruct[3] = {};
+
 // artistStruct myArtists[4] = {	// I set it up to be 4, it should be larger or we need to use realloc, calloc, or malloc or something
 	
 // 	{"", {"", "", ""}, -1}									// empty struct to indicate end of the array

@@ -23,7 +23,7 @@
 // };
 
 char * songs[10] = {};
-uint8_t songsSize = 3;		// there is actually three songs, but the first entry is the title of the menu
+int songsSize = 3;		// there is actually three songs, but the first entry is the title of the menu
 int songsCounter = 0;
 
 
