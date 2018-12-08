@@ -1,8 +1,6 @@
 #include "VS1011Drv.hpp"
 #include "Interrupt.h"
 
-Interrupt intr;
-
 VS1011Drv::VS1011Drv()
 {
     volume = 0;
@@ -17,10 +15,6 @@ VS1011Drv * VS1011Drv::instance()
         m_instance->initialize();
     }
     return m_instance;
-}
-
-void eint3Handler(void){
-	intr.HandleInterrupt();
 }
 
 //should set up the SPI and init the VS1011
@@ -85,14 +79,6 @@ void VS1011Drv::initialize()
 
     //xTaskCreate(SendToDecoder, "vSendToDecoder", 1024, NULL, 1, &taskHandle);
     //xTaskCreate(monitorVolume, "vMonitorVolume", 1024, NULL, 1, NULL);
-
-    // create interrupt buttons for volume up and down
-    intr.Initialize();
-    // when interrupt is triggered, go to Eint3Handler()
-    isr_register(EINT3_IRQn, eint3Handler);
-    //specify port, pin, IsrPointer, and interruptCondition for interrupt buttons
-    intr.AttachInterruptHandler(2, 0, volUp, kRisingEdge);
-    intr.AttachInterruptHandler(0, 0, volDown, kRisingEdge);
 }
 
 //this is driven by a command handler. you can use the terminal to execute the start and stop of the test
@@ -192,23 +178,6 @@ void VS1011Drv::SineTestStop()
 //         }
 //     }
 // }
-
-// actual volume ranges from 0 to 254dB. If volume reaches 255dB, it triggers powerdown mode
-void volUp(uint16_t incr = 0x3232)
-{
-    uint16_t result = SendSCIReadCommand(0xB);
-    incr = ((incr / 0.5) << 8) + (incr / 0.5);
-    result -= incr;
-    SendSCIWriteCommand(0xB, result);
-}
-
-void volDown(uint16_t decr = 0x3232) 
-{
-    uint16_t result = SendSCIReadCommand(0xB);
-    incr = ((incr / 0.5) << 8) + (incr / 0.5);
-    result += incr;
-    SendSCIWriteCommand(0xB, result);
-}
 
 //This is used for initial setup, sending config commands to the flash
 void VS1011Drv::SendSCIWriteCommand(uint8_t regAddr, uint16_t writeData)
