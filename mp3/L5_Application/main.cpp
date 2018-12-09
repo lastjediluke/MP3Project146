@@ -48,7 +48,6 @@
 #include "uart0_min.h"
 #include "LPC17xx.h"
 #include "eint.h"
-#include "tasks.hpp"
 // #include "INTDrv.hpp"
 #include "lpc_isr.h"
 // #include "Flash.h"
@@ -85,36 +84,41 @@ uint16_t volPot = 0;
 Interrupt intr;
 ADCDrv adc_driver;
 
-void volUpDown(void *pvParam)
+void volUpDown(void *pvParams)
 {
+	char * result = new char[32];
+	long yield = 0;
 	while (1)
 	{
-		char * result = new char[32];
 		uart0_puts("inside volUpDown if\n");
 		float tmp = adc_driver.ReadAdcVoltageByChannel(3);
 		sprintf(result, "%f" , tmp);
         uart0_puts(result);
 		if (tmp > volPot)
 		{
+			volPot = tmp;
 			uart0_puts("inside volume up\n");
-			// uint16_t incr = ((incr / 0.5) << 8) + (incr / 0.5);
-			// result -= incr;
-			// decoder.SendSCIWriteCommand(0xB, result);
+			uint16_t incr = ((incr / 0.5) << 8) + (incr / 0.5);
+			result -= incr;
+			decoder.SendSCIWriteCommand(0xB, result);
 		}
 		else if (tmp < volPot)
 		{
+			volPot = tmp;
 			uart0_puts("inside volume down\n");
-			// uint16_t incr = ((incr / 0.5) << 8) + (incr / 0.5);
-			// result -= incr;
-			// decoder.SendSCIWriteCommand(0xB, result);
+			uint16_t incr = ((incr / 0.5) << 8) + (incr / 0.5);
+			result -= incr;
+			decoder.SendSCIWriteCommand(0xB, result);
 		}
 		else
 		{
+			volPot = tmp;
 			uart0_puts("malfunction\n");
-			// uint16_t incr = ((incr / 0.5) << 8) + (incr / 0.5);
-			// result -= incr;
-			// decoder.SendSCIWriteCommand(0xB, result);
+			uint16_t incr = ((incr / 0.5) << 8) + (incr / 0.5);
+			result -= incr;
+			decoder.SendSCIWriteCommand(0xB, result);
 		}
+		vTaskDelay(500);
 	}
 }
 
@@ -242,27 +246,33 @@ void Eint3Handler(void)
 	intr.HandleInterrupt();
 }
 
+void ADCHandler(void)
+{
+	intr.HandleADCInterrupt();
+}
+
 int main (void)
 {
 	// VS1011Drv decoder;
     // volPot = decoder.SendSCIReadCommand(0xB);
 
     adc_driver.AdcInitBurstMode();
+    adc_driver.AdcSelectPin(ADCDrv::k0_26);
 
 	uart0_puts ("inside main\n");
 
 	// create interrupt buttons for volume up and down
     intr.Initialize();
     // when interrupt is triggered, go to Eint3Handler()
-    isr_register(EINT3_IRQn, Eint3Handler);
+    isr_register(EINT3_IRQn, Eint3Handler);		// button interrupt
 
 	// need to define port and pin numbers
     // intr.AttachInterruptHandler(2, 0, volUp, kRisingEdge);
     // intr.AttachInterruptHandler(0, 0, volDown, kRisingEdge);
-	intr.AttachInterruptHandler(2, 6, playOrPause, kRisingEdge);
-	intr.AttachInterruptHandler(2, 7, back, kRisingEdge);
-	intr.AttachInterruptHandler(0, 1, select, kRisingEdge);
-	intr.AttachInterruptHandler(0, 0, down, kRisingEdge);
+	// intr.AttachInterruptHandler(2, 6, playOrPause, kRisingEdge);
+	// intr.AttachInterruptHandler(2, 7, back, kRisingEdge);
+	// intr.AttachInterruptHandler(0, 1, select, kRisingEdge);
+	// intr.AttachInterruptHandler(0, 0, down, kRisingEdge);
 
 	// intr.AttachInterruptHandler(0, 0, up, kRisingEdge);
 
