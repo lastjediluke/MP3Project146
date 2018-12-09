@@ -42,27 +42,29 @@
 #include <stdio.h>
 #include "utilities.h"
 #include "io.hpp"
-#include "MP3SPI.hpp"
-#include "MP3GPIO.hpp"
+// #include "MP3SPI.hpp"
+// #include "MP3GPIO.hpp"
 #include "FreeRTOS.h"
-#include "tasks.hpp"
-#include "task.h"
 #include "uart0_min.h"
 #include "LPC17xx.h"
-#include "INTDrv.hpp"
+#include "eint.h"
+
+#include <stddef.h>
+
+// #include "INTDrv.hpp"
 #include "lpc_isr.h"
-#include "Flash.h"
-#include "labSPI.hpp"
-#include "artist.hpp"
-#include "song.hpp"
-#include "lcd.hpp"
-#include "state.hpp"
-#include "functions.hpp"
+// #include "Flash.h"
+// #include "labSPI.hpp"
+// #include "artist.hpp"
+// #include "song.hpp"
+// #include "lcd.hpp"
+// #include "state.hpp"
+// #include "functions.hpp"
 
 #include "Interrupt.h"
-#include "VS1011Drv.h"
+// #include "VS1011Drv.hpp"
 
-INTDrv * IntDriver = INTDrv::instance();
+// INTDrv * IntDriver = INTDrv::instance();
 
 TaskHandle_t viewController;
 
@@ -81,6 +83,8 @@ bool backButton = 0;
 
 char **statePtr;
 
+Interrupt intr;
+
 // actual volume ranges from 0 to 254dB. If volume reaches 255dB, it triggers powerdown mode
 void volUp()
 {
@@ -90,13 +94,13 @@ void volUp()
 
 	if (xSemaphoreTake(volUpSemaphore, portMAX_DELAY))
     {
+		uart0_puts("inside volume up\n");
 		// uint16_t incr = 0x3232;
-		uint16_t incr = 0x3232;
-		VS1011Drv decoder;
-        uint16_t result = decoder.SendSCIReadCommand(0xB);
-        incr = ((incr / 0.5) << 8) + (incr / 0.5);
-        result -= incr;
-        decoder.SendSCIWriteCommand(0xB, result);
+		// VS1011Drv decoder;
+        // uint16_t result = decoder.SendSCIReadCommand(0xB);
+        // incr = ((incr / 0.5) << 8) + (incr / 0.5);
+        // result -= incr;
+        // decoder.SendSCIWriteCommand(0xB, result);
     }
 }
 
@@ -108,13 +112,13 @@ void volDown()
 
 	if (xSemaphoreTake(volDownSemaphore, portMAX_DELAY))
     {
+		uart0_puts("inside volume up\n");
 		// uint16_t incr = 0x3232;
-		uint16_t incr = 0x3232;
-		VS1011Drv decoder;
-        uint16_t result = decoder.SendSCIReadCommand(0xB);
-        incr = ((incr / 0.5) << 8) + (incr / 0.5);
-        result += incr;
-        decoder.SendSCIWriteCommand(0xB, result);
+		// VS1011Drv decoder;
+        // uint16_t result = decoder.SendSCIReadCommand(0xB);
+        // incr = ((incr / 0.5) << 8) + (incr / 0.5);
+        // result += incr;
+        // decoder.SendSCIWriteCommand(0xB, result);
     }
 }
 
@@ -126,14 +130,15 @@ void playOrPause()
 
 	if (xSemaphoreTake(playPauseSemaphore, portMAX_DELAY))
     {
-		if (songIsPlaying) {
-			songIsPlaying = 0;
-			led1.setHigh();
-		}
-		else {
-			songIsPlaying = 1;
-			led1.setLow();
-		}
+		uart0_puts("play or pause\n");
+		// if (songIsPlaying) {
+		// 	songIsPlaying = 0;
+		// 	led1.setHigh();
+		// }
+		// else {
+		// 	songIsPlaying = 1;
+		// 	led1.setLow();
+		// }
     }
 }
 
@@ -145,11 +150,11 @@ void back()
 
 	if (xSemaphoreTake(backSemaphore, portMAX_DELAY))
     {
-		led4.setLow();
+		// led4.setLow();
 		uart0_puts ("back button pressed\n");
-		currentState = mainMenuScreen;
-		displayCurrentState();
-		selectButton = 0;
+		// currentState = mainMenuScreen;
+		// displayCurrentState();
+		// selectButton = 0;
     }
 }
 
@@ -161,11 +166,11 @@ void select()
 
 	if (xSemaphoreTake(selectSemaphore, portMAX_DELAY))
     {
-		led2.setLow();
+		// led2.setLow();
 		uart0_puts ("select button pressed\n");
-		prepareForNextState();
-		displayCurrentState();
-		selectButton = 0;
+		// prepareForNextState();
+		// displayCurrentState();
+		// selectButton = 0;
     }
 }
 
@@ -177,10 +182,10 @@ void down()
 
 	if (xSemaphoreTake(downSemaphore, portMAX_DELAY))
 	{
-		downButton = 0;
+		// downButton = 0;
 		uart0_puts ("down button pressed\n");
-		led3.setLow();
-		displayCurrentState();
+		// led3.setLow();
+		// displayCurrentState();
 	}
 }
 
@@ -192,10 +197,10 @@ void up()
 
 	if (xSemaphoreTake(upSemaphore, portMAX_DELAY))
 	{
-		upButton = 0;
+		// upButton = 0;
 		uart0_puts ("up button pressed\n");
-		led3.setLow();
-		displayCurrentState();
+		// led3.setLow();
+		// displayCurrentState();
 	}
 }
 
@@ -206,28 +211,27 @@ void Eint3Handler(void)
 
 int main (void)
 {
+	uart0_puts ("inside main\n");
+
 	// create interrupt buttons for volume up and down
-    Interrupt intr;
     intr.Initialize();
     // when interrupt is triggered, go to Eint3Handler()
-    isr_register(EINT3_IRQn, eint3Handler);
+    isr_register(EINT3_IRQn, Eint3Handler);
 
 	// need to define port and pin numbers
-    intr.AttachInterruptHandler(2, 0, volUp, kRisingEdge);
-    intr.AttachInterruptHandler(0, 0, volDown, kRisingEdge);
-	intr.AttachInterruptHandler(0, 0, playOrPause, kRisingEdge);
-	intr.AttachInterruptHandler(0, 0, back, kRisingEdge);
+    // intr.AttachInterruptHandler(2, 0, volUp, kRisingEdge);
+    // intr.AttachInterruptHandler(0, 0, volDown, kRisingEdge);
+	intr.AttachInterruptHandler(2, 6, playOrPause, kRisingEdge);
+	intr.AttachInterruptHandler(2, 7, back, kRisingEdge);
 	intr.AttachInterruptHandler(0, 0, select, kRisingEdge);
 	intr.AttachInterruptHandler(0, 0, down, kRisingEdge);
-	intr.AttachInterruptHandler(0, 0, up, kRisingEdge);
+	// intr.AttachInterruptHandler(0, 0, up, kRisingEdge);
 
-	button_press_semaphore = xSemaphoreCreateBinary();
+    // outputSetup();
+    // buttonAndLedSetup();
 
-    outputSetup();
-    buttonAndLedSetup();
-
-    getSongsFromStruct();
-    getArtistFromStruct();
+    // getSongsFromStruct();
+    // getArtistFromStruct();
 
     downSemaphore = xSemaphoreCreateBinary();
 	upSemaphore = xSemaphoreCreateBinary();
@@ -237,21 +241,18 @@ int main (void)
 	volDownSemaphore = xSemaphoreCreateBinary();
 	volUpSemaphore = xSemaphoreCreateBinary();
 
-    delay_ms(50);
-    spiLCDInit();
+    // spiLCDInit();
 
-    delay_ms(100);
+    // lcd_cs.setLow();
+    // instance.transferMP3(0x7c);
+    // instance.transferMP3(0x9d); 		// make it red
+    // lcd_cs.setHigh();
 
-    lcd_cs.setLow();
-    instance.transferMP3(0x7c);
-    instance.transferMP3(0x9d); 		// make it red
-    lcd_cs.setHigh();
-
-    const uint32_t STACK_SIZE_WORDS = 128;
+    // const uint32_t STACK_SIZE_WORDS = 128;
     
-    xTaskCreate(vControlLED, "vControlLED", STACK_SIZE_WORDS, NULL, tskIDLE_PRIORITY + 1,  &viewController);
-    xTaskCreate(timerTask, "timerTask", 1024, NULL, tskIDLE_PRIORITY + 1, NULL);
+    // xTaskCreate(vControlLED, "vControlLED", STACK_SIZE_WORDS, NULL, tskIDLE_PRIORITY + 1,  &viewController);
+    // xTaskCreate(timerTask, "timerTask", 1024, NULL, tskIDLE_PRIORITY + 1, NULL);
     
-    vTaskStartScheduler();
+    // vTaskStartScheduler();
     return 0;
 }
