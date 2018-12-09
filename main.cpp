@@ -31,8 +31,13 @@
 #include "uart0_min.h"
 #include "eint.h"
 #include "lpc_isr.h"
+// #include "Interrupt.h"
+#include "INTDrv.hpp"
 
 TaskHandle_t viewController;
+
+// Interrupt intr;
+INTDrv * intr = INTDrv::instance();
 
 SemaphoreHandle_t downSemaphore = NULL;
 SemaphoreHandle_t selectSemaphore = NULL;
@@ -251,10 +256,11 @@ void timerTask(void *)
 void playOrPause()
 {
 	long yield = 0;
-	xSemaphoreGiveFromISR(playPauseSemaphore, &yield);
+	xSemaphoreGiveFromISR(xSemaphore, &yield);
 	portYIELD_FROM_ISR(yield);
 
-	if (xSemaphoreTake(playPauseSemaphore, portMAX_DELAY))
+    /*
+	if (xSemaphoreTake(xSemaphore, portMAX_DELAY))
     {
 		uart0_puts("play or pause\n");
 		// if (songIsPlaying) {
@@ -266,6 +272,7 @@ void playOrPause()
 		// 	led1.setLow();
 		// }
     }
+    */
 }
 
 void back() 
@@ -274,6 +281,7 @@ void back()
 	xSemaphoreGiveFromISR(backSemaphore, &yield);
 	portYIELD_FROM_ISR(yield);
 
+    /*
 	if (xSemaphoreTake(backSemaphore, portMAX_DELAY))
     {
 		// led4.setLow();
@@ -282,6 +290,7 @@ void back()
 		// displayCurrentState();
 		// selectButton = 0;
     }
+    */
 }
 
 void select()
@@ -290,6 +299,7 @@ void select()
 	xSemaphoreGiveFromISR(selectSemaphore, &yield);
 	portYIELD_FROM_ISR(yield);	
 
+    /*
 	if (xSemaphoreTake(selectSemaphore, portMAX_DELAY))
     {
 		// led2.setLow();
@@ -298,6 +308,7 @@ void select()
 		// displayCurrentState();
 		// selectButton = 0;
     }
+    */
 }
 
 void down()
@@ -306,6 +317,7 @@ void down()
 	xSemaphoreGiveFromISR(downSemaphore, &yield);
 	portYIELD_FROM_ISR(yield);
 
+    /*
 	if (xSemaphoreTake(downSemaphore, portMAX_DELAY))
 	{
 		// downButton = 0;
@@ -313,26 +325,27 @@ void down()
 		// led3.setLow();
 		// displayCurrentState();
 	}
+    */
 }
 
-void up()
-{
-	long yield = 0;
-	xSemaphoreGiveFromISR(upSemaphore, &yield);
-	portYIELD_FROM_ISR(yield);
+// void up()
+// {
+// 	long yield = 0;
+// 	xSemaphoreGiveFromISR(upSemaphore, &yield);
+// 	portYIELD_FROM_ISR(yield);
 
-	if (xSemaphoreTake(upSemaphore, portMAX_DELAY))
-	{
-		// upButton = 0;
-		uart0_puts ("up button pressed\n");
-		// led3.setLow();
-		// displayCurrentState();
-	}
-}
+// 	if (xSemaphoreTake(upSemaphore, portMAX_DELAY))
+// 	{
+// 		// upButton = 0;
+// 		uart0_puts ("up button pressed\n");
+// 		// led3.setLow();
+// 		// displayCurrentState();
+// 	}
+// }
 
 void Eint3Handler(void)
 {
-	intr.HandleInterrupt();
+	intr->HandleInterrupt();
 }
 
 
@@ -350,17 +363,17 @@ int main (void)
     downSemaphore = xSemaphoreCreateBinary();
     selectSemaphore = xSemaphoreCreateBinary();
     backSemaphore = xSemaphoreCreateBinary();
-    intr.Initialize();
+    intr->Initialize();
     // when interrupt is triggered, go to Eint3Handler()
     isr_register(EINT3_IRQn, Eint3Handler);
 
 	// need to define port and pin numbers
     // intr.AttachInterruptHandler(2, 0, volUp, kRisingEdge);
     // intr.AttachInterruptHandler(0, 0, volDown, kRisingEdge);
-	intr.AttachInterruptHandler(2, 0, playOrPause, kRisingEdge);
-	intr.AttachInterruptHandler(2, 1, back, kRisingEdge);
-	intr.AttachInterruptHandler(2, 2, select, kRisingEdge);
-	intr.AttachInterruptHandler(2, 3, down, kRisingEdge);
+	intr->AttachInterruptHandler(2, 0, playOrPause, kFallingEdge);
+	intr->AttachInterruptHandler(2, 1, select, kFallingEdge);
+	intr->AttachInterruptHandler(2, 2, down, kFallingEdge);
+	intr->AttachInterruptHandler(2, 3, back, kFallingEdge);
     delay_ms(50);
     printf("end main before scheduler\n");
     xTaskCreate(vControlLED, "vControlLED", 1024, NULL, tskIDLE_PRIORITY + 1,  &viewController);
