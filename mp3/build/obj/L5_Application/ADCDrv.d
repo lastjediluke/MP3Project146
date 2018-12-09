@@ -1,5 +1,5 @@
-build/obj/L5_Application/main.o: L5_Application/main.cpp \
- /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/utilities.h \
+build/obj/L5_Application/ADCDrv.o: L5_Application/ADCDrv.cpp \
+ L5_Application/ADCDrv.hpp \
  /home/bionia/SJSU-Dev/firmware/lib/L4_IO/io.hpp \
  /home/bionia/SJSU-Dev/firmware/lib/L4_IO/acceleration_sensor.hpp \
  /home/bionia/SJSU-Dev/firmware/lib/L4_IO/i2c2_device.hpp \
@@ -35,27 +35,9 @@ build/obj/L5_Application/main.o: L5_Application/main.cpp \
  /home/bionia/SJSU-Dev/firmware/lib/L4_IO/light_sensor.hpp \
  /home/bionia/SJSU-Dev/firmware/lib/L4_IO/switches.hpp \
  /home/bionia/SJSU-Dev/firmware/lib/L4_IO/temperature_sensor.hpp \
- /home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/uart0_min.h \
- /home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/eint.h \
- /home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/lpc_sys.h \
- /home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/fault_registers.h \
- /home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/rtc.h \
- /home/bionia/SJSU-Dev/firmware/lib/L5_HighLevel/tasks.hpp \
- /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/scheduler_task.hpp \
- /home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/queue.h \
- /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/soft_timer.hpp \
- /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/command_handler.hpp \
- /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/vector.hpp \
- /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/str.hpp \
- /home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/char_dev.hpp \
- /home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/wireless.h \
- /home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/mesh.h \
- /home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/mesh_typedefs.h \
- /home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/mesh_config.h \
- /home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/mesh_typedefs.h \
- L5_Application/ADCDrv.hpp L5_Application/Interrupt.h
+ /home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/uart0_min.h
 
-/home/bionia/SJSU-Dev/firmware/lib/L3_Utils/utilities.h:
+L5_Application/ADCDrv.hpp:
 
 /home/bionia/SJSU-Dev/firmware/lib/L4_IO/io.hpp:
 
@@ -128,41 +110,3 @@ build/obj/L5_Application/main.o: L5_Application/main.cpp \
 /home/bionia/SJSU-Dev/firmware/lib/L4_IO/temperature_sensor.hpp:
 
 /home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/uart0_min.h:
-
-/home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/eint.h:
-
-/home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/lpc_sys.h:
-
-/home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/fault_registers.h:
-
-/home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/rtc.h:
-
-/home/bionia/SJSU-Dev/firmware/lib/L5_HighLevel/tasks.hpp:
-
-/home/bionia/SJSU-Dev/firmware/lib/L3_Utils/scheduler_task.hpp:
-
-/home/bionia/SJSU-Dev/firmware/lib/L1_FreeRTOS/include/queue.h:
-
-/home/bionia/SJSU-Dev/firmware/lib/L3_Utils/soft_timer.hpp:
-
-/home/bionia/SJSU-Dev/firmware/lib/L3_Utils/command_handler.hpp:
-
-/home/bionia/SJSU-Dev/firmware/lib/L3_Utils/vector.hpp:
-
-/home/bionia/SJSU-Dev/firmware/lib/L3_Utils/str.hpp:
-
-/home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/base/char_dev.hpp:
-
-/home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/wireless.h:
-
-/home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/mesh.h:
-
-/home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/mesh_typedefs.h:
-
-/home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/mesh_config.h:
-
-/home/bionia/SJSU-Dev/firmware/lib/L4_IO/wireless/src/mesh_typedefs.h:
-
-L5_Application/ADCDrv.hpp:
-
-L5_Application/Interrupt.h:

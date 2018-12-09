@@ -48,9 +48,7 @@
 #include "uart0_min.h"
 #include "LPC17xx.h"
 #include "eint.h"
-
-#include <stddef.h>
-
+#include "tasks.hpp"
 // #include "INTDrv.hpp"
 #include "lpc_isr.h"
 // #include "Flash.h"
@@ -61,6 +59,7 @@
 // #include "state.hpp"
 // #include "functions.hpp"
 
+#include "ADCDrv.hpp"
 #include "Interrupt.h"
 // #include "VS1011Drv.hpp"
 
@@ -81,9 +80,43 @@ bool upButton = 0;
 bool selectButton = 0;
 bool backButton = 0;
 
-char **statePtr;
+uint16_t volPot = 0;
 
 Interrupt intr;
+ADCDrv adc_driver;
+
+void volUpDown(void *pvParam)
+{
+	while (1)
+	{
+		char * result = new char[32];
+		uart0_puts("inside volUpDown if\n");
+		float tmp = adc_driver.ReadAdcVoltageByChannel(3);
+		sprintf(result, "%f" , tmp);
+        uart0_puts(result);
+		if (tmp > volPot)
+		{
+			uart0_puts("inside volume up\n");
+			// uint16_t incr = ((incr / 0.5) << 8) + (incr / 0.5);
+			// result -= incr;
+			// decoder.SendSCIWriteCommand(0xB, result);
+		}
+		else if (tmp < volPot)
+		{
+			uart0_puts("inside volume down\n");
+			// uint16_t incr = ((incr / 0.5) << 8) + (incr / 0.5);
+			// result -= incr;
+			// decoder.SendSCIWriteCommand(0xB, result);
+		}
+		else
+		{
+			uart0_puts("malfunction\n");
+			// uint16_t incr = ((incr / 0.5) << 8) + (incr / 0.5);
+			// result -= incr;
+			// decoder.SendSCIWriteCommand(0xB, result);
+		}
+	}
+}
 
 // actual volume ranges from 0 to 254dB. If volume reaches 255dB, it triggers powerdown mode
 void volUp()
@@ -211,6 +244,11 @@ void Eint3Handler(void)
 
 int main (void)
 {
+	// VS1011Drv decoder;
+    // volPot = decoder.SendSCIReadCommand(0xB);
+
+    adc_driver.AdcInitBurstMode();
+
 	uart0_puts ("inside main\n");
 
 	// create interrupt buttons for volume up and down
@@ -223,8 +261,9 @@ int main (void)
     // intr.AttachInterruptHandler(0, 0, volDown, kRisingEdge);
 	intr.AttachInterruptHandler(2, 6, playOrPause, kRisingEdge);
 	intr.AttachInterruptHandler(2, 7, back, kRisingEdge);
-	intr.AttachInterruptHandler(0, 0, select, kRisingEdge);
+	intr.AttachInterruptHandler(0, 1, select, kRisingEdge);
 	intr.AttachInterruptHandler(0, 0, down, kRisingEdge);
+
 	// intr.AttachInterruptHandler(0, 0, up, kRisingEdge);
 
     // outputSetup();
@@ -241,18 +280,9 @@ int main (void)
 	volDownSemaphore = xSemaphoreCreateBinary();
 	volUpSemaphore = xSemaphoreCreateBinary();
 
-    // spiLCDInit();
+	xTaskCreate(volUpDown, "volUpDown", 1024, (void*) 0, 1, NULL);
+	vTaskStartScheduler();
 
-    // lcd_cs.setLow();
-    // instance.transferMP3(0x7c);
-    // instance.transferMP3(0x9d); 		// make it red
-    // lcd_cs.setHigh();
-
-    // const uint32_t STACK_SIZE_WORDS = 128;
-    
-    // xTaskCreate(vControlLED, "vControlLED", STACK_SIZE_WORDS, NULL, tskIDLE_PRIORITY + 1,  &viewController);
-    // xTaskCreate(timerTask, "timerTask", 1024, NULL, tskIDLE_PRIORITY + 1, NULL);
-    
-    // vTaskStartScheduler();
+	while(1){}
     return 0;
 }
