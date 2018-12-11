@@ -40,7 +40,8 @@ build/obj/L5_Application/main.o: L5_Application/main.cpp \
  /home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/lpc_sys.h \
  /home/bionia/SJSU-Dev/firmware/lib/L0_LowLevel/fault_registers.h \
  /home/bionia/SJSU-Dev/firmware/lib/L2_Drivers/rtc.h \
- L5_Application/ADCDrv.hpp L5_Application/Interrupt.h
+ L5_Application/ADCDrv.hpp L5_Application/Interrupt.h \
+ /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/printf_lib.h
 
 /home/bionia/SJSU-Dev/firmware/lib/L3_Utils/utilities.h:
 
@@ -127,3 +128,5 @@ build/obj/L5_Application/main.o: L5_Application/main.cpp \
 L5_Application/ADCDrv.hpp:
 
 L5_Application/Interrupt.h:
+
+/home/bionia/SJSU-Dev/firmware/lib/L3_Utils/printf_lib.h:

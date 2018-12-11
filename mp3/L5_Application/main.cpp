@@ -60,6 +60,7 @@
 
 #include "ADCDrv.hpp"
 #include "Interrupt.h"
+#include "printf_lib.h"
 // #include "VS1011Drv.hpp"
 
 // INTDrv * IntDriver = INTDrv::instance();
@@ -79,7 +80,9 @@ bool upButton = 0;
 bool selectButton = 0;
 bool backButton = 0;
 
-uint16_t volPot = 0;
+uint16_t incr = 0x3232;	// 25dB increments
+
+float volPot = 0;
 
 Interrupt intr;
 ADCDrv adc_driver;
@@ -87,36 +90,42 @@ ADCDrv adc_driver;
 void volUpDown(void *pvParams)
 {
 	char * result = new char[32];
-	long yield = 0;
+	volPot = adc_driver.ReadAdcVoltageByChannel(3);
 	while (1)
 	{
-		uart0_puts("inside volUpDown if\n");
 		float tmp = adc_driver.ReadAdcVoltageByChannel(3);
+
+		uart0_puts("voltage reading");
 		sprintf(result, "%f" , tmp);
         uart0_puts(result);
-		if (tmp > volPot)
+
+		// threshold de-bouncer: potentiometer has range 0 to 4096, mp3 volume has 0 to 254, but we're only going up to 250, for a more even volume increment and decrement, so 4096V/250dB = 16.38V/dB
+		//for 25dB theshhold change, you need to have: 16.38V/dB * 25dB = 409.6V to change the volume
+		if (tmp > volPot + 409.6)
 		{
+			uart0_puts("inside volume up");
+			sprintf(result, "%f" , tmp);
+        	uart0_puts(result);
+
 			volPot = tmp;
-			uart0_puts("inside volume up\n");
-			uint16_t incr = ((incr / 0.5) << 8) + (incr / 0.5);
-			result -= incr;
-			decoder.SendSCIWriteCommand(0xB, result);
+			// uart0_puts("inside volume up\n");
+			// incr = ((int)(incr / 0.5) << 8) + (incr / 0.5);
+			// result -= incr;
+			// VS1011Drv decoder;
+			// decoder.SendSCIWriteCommand(0xB, result);
 		}
-		else if (tmp < volPot)
+		else if (tmp < volPot - 409.6)
 		{
+			uart0_puts("inside volume down");
+			sprintf(result, "%f" , tmp);
+        	uart0_puts(result);
+
 			volPot = tmp;
-			uart0_puts("inside volume down\n");
-			uint16_t incr = ((incr / 0.5) << 8) + (incr / 0.5);
-			result -= incr;
-			decoder.SendSCIWriteCommand(0xB, result);
-		}
-		else
-		{
-			volPot = tmp;
-			uart0_puts("malfunction\n");
-			uint16_t incr = ((incr / 0.5) << 8) + (incr / 0.5);
-			result -= incr;
-			decoder.SendSCIWriteCommand(0xB, result);
+			// uart0_puts("inside volume down\n");
+			// incr = ((int)(incr / 0.5) << 8) + (incr / 0.5);
+			// result -= incr;
+			// VS1011Drv decoder;
+			// decoder.SendSCIWriteCommand(0xB, result);
 		}
 		vTaskDelay(500);
 	}
